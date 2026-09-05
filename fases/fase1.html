@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Stranger Code - Capítulo 1
+    </title>
+
+    <link rel="stylesheet"
+        href="../style.css">
+
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+
+    <section class="tela">
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                CAPÍTULO UM
+            </p>
+
+        </header>
+
+
+        <a
+            href="../index.html"
+            class="voltar"
+        >
+
+            ← Voltar ao mapa
+
+        </a>
+
+
+        <div class="fase-container">
+
+
+            <div class="missao">
+
+                <span class="numero">
+                    CAPÍTULO UM
+                </span>
+
+
+                <h2>
+                    A Ficha de Onze
+                </h2>
+
+
+                <p>
+Hawkins, 1983.
+
+Onze acabou de escapar do Laboratório Nacional.
+
+Para entrar na turma do Mike, ela precisa
+de uma ficha de identidade.
+                </p>
+
+
+                <h3>
+                    SUA MISSÃO
+                </h3>
+
+
+                <ul id="tarefas">
+
+                    <li>
+                        Pergunte o nome usando prompt().
+                    </li>
+
+                    <li>
+                        Pergunte a idade usando parseInt().
+                    </li>
+
+                    <li>
+                        Pergunte os waffles usando parseFloat().
+                    </li>
+
+                    <li>
+                        Mostre tudo usando document.write().
+                    </li>
+
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+
+Você pode começar assim:
+
+let nome =
+prompt("Qual o nome?");
+
+Para a idade:
+
+let idade =
+parseInt(
+    prompt("Qual a idade?")
+);
+
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+
+let nome =
+prompt("Qual o nome?");
+
+let idade =
+parseInt(
+    prompt("Qual a idade?")
+);
+
+let waffles =
+parseFloat(
+    prompt("Quantos waffles?")
+);
+
+document.write(
+    "Nome: " + nome
+);
+
+document.write(
+    "&lt;br&gt;Idade: " + idade
+);
+
+document.write(
+    "&lt;br&gt;Waffles: " + waffles
+);
+
+                </div>
+
+            </div>
+
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                >// =================================
+// CAPÍTULO 1 - A FICHA DE ONZE
+// =================================
+
+// TODO 1:
+// Pergunte o nome usando prompt()
+
+
+// TODO 2:
+// Pergunte a idade
+// usando parseInt()
+
+
+// TODO 3:
+// Pergunte os waffles
+// usando parseFloat()
+
+
+// TODO 4:
+// Mostre tudo usando document.write()</textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ✓ Verificar fase
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+
+                    SAÍDA DO PROGRAMA
+
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Stranger Code • Hawkins, Indiana
+        </footer>
+
+    </section>
+
+
+    <script src="../js/fase1.js"></script>
+
+</body>
+
+</html>

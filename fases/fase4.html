@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Stranger Code - Capítulo 4</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <section class="tela">
+
+        <header>
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                CAPÍTULO QUATRO
+            </p>
+        </header>
+
+
+        <a href="../index.html" class="voltar">
+            ← Voltar ao mapa
+        </a>
+
+
+        <div class="fase-container">
+
+            <div class="missao">
+
+                <span class="numero">
+                    CAPÍTULO QUATRO
+                </span>
+
+                <h2>
+                    Batalha por Turnos
+                </h2>
+
+                <p>
+O Demogorgon apareceu!
+
+Agora a batalha acontece em turnos.
+
+Você precisa atacar até que
+a vida do inimigo chegue a zero.
+                </p>
+
+
+                <h3>SUA MISSÃO</h3>
+
+                <ul id="tarefas">
+
+                    <li>
+                        Crie uma variável para a vida do inimigo.
+                    </li>
+
+                    <li>
+                        Use while para controlar a batalha.
+                    </li>
+
+                    <li>
+                        Diminua a vida a cada ataque.
+                    </li>
+
+                    <li>
+                        Use for para repetir ataques.
+                    </li>
+
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+
+while (vida > 0) {
+
+    vida = vida - dano;
+
+}
+
+Use for para repetir ataques.
+
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+
+let vida = 100;
+
+let dano = 20;
+
+
+while (vida > 0) {
+
+    vida -= dano;
+
+    document.write(
+        "Vida: " + vida + "&lt;br&gt;"
+    );
+
+}
+
+
+for (
+    let i = 0;
+    i < 3;
+    i++
+) {
+
+    document.write(
+        "Ataque realizado!&lt;br&gt;"
+    );
+
+}
+
+                </div>
+
+            </div>
+
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>EDITOR.JS</span>
+
+                    <span>JAVASCRIPT</span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                >// CAPÍTULO 4 - BATALHA POR TURNOS
+
+let vida = 100;
+
+let dano = 20;
+
+
+// TODO:
+// Use while para a batalha
+
+
+// TODO:
+// Diminua a vida do inimigo
+
+
+// TODO:
+// Use for para repetir ataques</textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ✓ Verificar fase
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+                    SAÍDA DO PROGRAMA
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Stranger Code • Hawkins, Indiana
+        </footer>
+
+    </section>
+
+
+    <script src="../js/fase4.js"></script>
+
+</body>
+
+</html>

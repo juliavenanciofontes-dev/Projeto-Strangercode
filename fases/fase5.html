@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Stranger Code - Capítulo 5
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+
+    <section class="tela">
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                CAPÍTULO CINCO
+            </p>
+
+        </header>
+
+
+        <a
+            href="../index.html"
+            class="voltar"
+        >
+            ← Voltar ao mapa
+        </a>
+
+
+        <div class="fase-container">
+
+
+            <div class="missao">
+
+                <span class="numero">
+                    CAPÍTULO CINCO
+                </span>
+
+
+                <h2>
+                    A Mochila do Dustin
+                </h2>
+
+
+                <p>
+Dustin está preparando sua mochila
+para uma nova aventura.
+
+Ele precisa organizar todos os itens
+que serão levados para a missão.
+                </p>
+
+
+                <h3>SUA MISSÃO</h3>
+
+
+                <ul id="tarefas">
+
+                    <li>
+                        Crie um vetor chamado mochila.
+                    </li>
+
+                    <li>
+                        Coloque itens dentro dele.
+                    </li>
+
+                    <li>
+                        Use push() para adicionar um item.
+                    </li>
+
+                    <li>
+                        Use for para mostrar os itens.
+                    </li>
+
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+
+let mochila = [
+    "lanterna",
+    "comida"
+];
+
+mochila.push(
+    "bússola"
+);
+
+Use mochila.length
+dentro do for.
+
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+
+let mochila = [
+    "lanterna",
+    "comida",
+    "walkie-talkie"
+];
+
+
+mochila.push(
+    "bússola"
+);
+
+
+for (
+    let i = 0;
+    i < mochila.length;
+    i++
+) {
+
+    document.write(
+        mochila[i] +
+        "&lt;br&gt;"
+    );
+
+}
+
+                </div>
+
+            </div>
+
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                >// CAPÍTULO 5
+// A MOCHILA DO DUSTIN
+
+
+// TODO:
+// Crie o vetor mochila
+
+
+// TODO:
+// Adicione itens
+
+
+// TODO:
+// Use push()
+
+
+// TODO:
+// Use for para mostrar os itens</textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ✓ Verificar fase
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+                    SAÍDA DO PROGRAMA
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Stranger Code • Hawkins, Indiana
+        </footer>
+
+    </section>
+
+
+    <script src="../js/fase5.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stranger Code</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- FUNDO -->
+
+    <div class="background"></div>
+
+
+    <!-- ==============================
+         TELA DO MAPA
+    =============================== -->
+
+    <section id="mapa" class="tela">
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                APRENDA JAVASCRIPT • UM CAPÍTULO POR VEZ
+            </p>
+
+            <p id="progresso">
+                1 de 7 capítulos concluídos
+            </p>
+
+        </header>
+
+
+        <div class="mapa">
+
+
+            <!-- FASE 1 -->
+
+            <div
+                id="card1"
+                class="card fase-disponivel"
+                onclick="abrirFase(1)"
+            >
+
+                <span class="numero">
+                    CAPÍTULO UM
+                </span>
+
+                <h2>
+                    A Ficha de Onze
+                </h2>
+
+                <p>
+                    Variáveis • prompt • parseInt •
+                    parseFloat • document.write
+                </p>
+
+                <span
+                    id="status1"
+                    class="status"
+                >
+                    DISPONÍVEL
+                </span>
+
+            </div>
+
+
+            <!-- FASE 2 -->
+
+            <div
+                id="card2"
+                class="card fase-bloqueada"
+            >
+
+                <span class="numero">
+                    CAPÍTULO DOIS
+                </span>
+
+                <h2>
+                    A Porta do Laboratório
+                </h2>
+
+                <p>
+                    Tudo do capítulo anterior +
+                    if e else
+                </p>
+
+                <span
+                    id="status2"
+                    class="status"
+                >
+                    🔒 BLOQUEADO
+                </span>
+
+            </div>
+
+
+            <!-- FASE 3 -->
+
+            <div
+                id="card3"
+                class="card fase-bloqueada"
+            >
+
+                <span class="numero">
+                    CAPÍTULO TRÊS
+                </span>
+
+                <h2>
+                    O Cálculo do Dano
+                </h2>
+
+                <p>
+                    Tudo dos anteriores +
+                    funções e return
+                </p>
+
+                <span
+                    id="status3"
+                    class="status"
+                >
+                    🔒 BLOQUEADO
+                </span>
+
+            </div>
+
+
+            <!-- FASE 4 -->
+
+            <div
+                id="card4"
+                class="card fase-bloqueada"
+            >
+
+                <span class="numero">
+                    CAPÍTULO QUATRO
+                </span>
+
+                <h2>
+                    Batalha por Turnos
+                </h2>
+
+                <p>
+                    Tudo dos anteriores +
+                    while e for
+                </p>
+
+                <span
+                    id="status4"
+                    class="status"
+                >
+                    🔒 BLOQUEADO
+                </span>
+
+            </div>
+
+
+            <!-- FASE 5 -->
+
+            <div
+                id="card5"
+                class="card fase-bloqueada"
+            >
+
+                <span class="numero">
+                    CAPÍTULO CINCO
+                </span>
+
+                <h2>
+                    A Mochila do Dustin
+                </h2>
+
+                <p>
+                    Tudo dos anteriores +
+                    vetores
+                </p>
+
+                <span
+                    id="status5"
+                    class="status"
+                >
+                    🔒 BLOQUEADO
+                </span>
+
+            </div>
+
+
+            <!-- FASE 6 -->
+
+            <div
+                id="card6"
+                class="card fase-bloqueada"
+            >
+
+                <span class="numero">
+                    CAPÍTULO SEIS
+                </span>
+
+                <h2>
+                    As Luzes da Joyce
+                </h2>
+
+                <p>
+                    Tudo dos anteriores +
+                    HTML + JavaScript
+                </p>
+
+                <span
+                    id="status6"
+                    class="status"
+                >
+                    🔒 BLOQUEADO
+                </span>
+
+            </div>
+
+
+            <!-- BOSS -->
+
+            <div
+                id="card7"
+                class="card boss fase-bloqueada"
+            >
+
+                <span class="numero">
+                    ⚠ BATALHA FINAL
+                </span>
+
+                <h2>
+                    Vecna e o Mundo Invertido
+                </h2>
+
+                <p>
+                    Tudo junto:
+                    JavaScript + HTML
+                </p>
+
+                <span
+                    id="status7"
+                    class="status"
+                >
+                    🔒 BLOQUEADO
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <footer>
+
+            Projeto educacional •
+            A cada capítulo uma nova habilidade.
+
+        </footer>
+
+    </section>
+
+
+
+    <!-- ==============================
+         TELA DA FASE
+    =============================== -->
+
+    <section
+        id="fase"
+        class="tela escondida"
+    >
+
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                APRENDA JAVASCRIPT • UM CAPÍTULO POR VEZ
+            </p>
+
+        </header>
+
+
+        <button
+            class="voltar"
+            onclick="voltarMapa()"
+        >
+            ← Voltar ao mapa
+        </button>
+
+
+        <div class="fase-container">
+
+
+            <!-- ======================
+                 MISSÃO
+            ======================= -->
+
+            <div class="missao">
+
+                <span
+                    id="faseNumero"
+                    class="numero"
+                >
+                    CAPÍTULO UM
+                </span>
+
+
+                <h2 id="faseTitulo">
+                    A Ficha de Onze
+                </h2>
+
+
+                <p id="historia">
+                    Hawkins, 1983.
+                </p>
+
+
+                <h3>
+                    SUA MISSÃO
+                </h3>
+
+
+                <ul id="tarefas">
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================
+                 EDITOR
+            ======================= -->
+
+            <div class="editor">
+
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                ></textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ✓ Verificar fase
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                >
+                </div>
+
+
+                <div class="saida-titulo">
+                    SAÍDA DO PROGRAMA
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+
+            Stranger Code • Hawkins, Indiana
+
+        </footer>
+
+    </section>
+
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

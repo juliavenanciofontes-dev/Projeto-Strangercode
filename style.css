@@ -1,0 +1,710 @@
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background: #080607;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+/* =========================================
+   FUNDO
+========================================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            rgba(10, 0, 0, 0.82),
+            rgba(5, 3, 7, 0.96)
+        ),
+        url("assets/fundo.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+/* =========================================
+   TELAS
+========================================= */
+
+.tela {
+
+    width: 900px;
+
+    max-width: 92%;
+
+    margin: auto;
+
+    padding: 45px 0;
+
+}
+
+
+.escondida {
+
+    display: none !important;
+
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+header {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+h1 {
+
+    display: inline-block;
+
+    padding: 5px 25px;
+
+    border-top: 3px solid red;
+
+    border-bottom: 3px solid red;
+
+    color: #ff0909;
+
+    font-family: Georgia, serif;
+
+    font-size: 58px;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 5px red,
+        0 0 15px red,
+        0 0 30px red;
+
+}
+
+
+.subtitle {
+
+    margin-top: 15px;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+}
+
+
+#progresso {
+
+    margin-top: 25px;
+
+    color: #888;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   MAPA
+========================================= */
+
+.mapa {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+
+    position: relative;
+
+    min-height: 165px;
+
+    padding: 22px;
+
+    border: 1px solid #302d35;
+
+    border-radius: 8px;
+
+    background:
+        rgba(18, 17, 22, 0.95);
+
+    transition: 0.3s;
+
+}
+
+
+.fase-disponivel {
+
+    cursor: pointer;
+
+}
+
+
+.fase-disponivel:hover {
+
+    transform: translateY(-5px);
+
+    border-color: red;
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 0, 0, 0.35);
+
+}
+
+
+.fase-bloqueada {
+
+    opacity: 0.42;
+
+    cursor: not-allowed;
+
+}
+
+
+.numero {
+
+    color: #ff1010;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+
+.card h2 {
+
+    margin-top: 12px;
+
+    font-size: 19px;
+
+}
+
+
+.card p {
+
+    margin-top: 15px;
+
+    color: #999;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+.status {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    padding: 5px 8px;
+
+    border: 1px solid #444;
+
+    border-radius: 20px;
+
+    color: #777;
+
+    font-size: 9px;
+
+}
+
+
+.boss {
+
+    border-color: #650000;
+
+    background:
+        linear-gradient(
+            rgba(45, 0, 0, 0.8),
+            rgba(10, 5, 10, 0.95)
+        );
+
+}
+
+
+.boss h2 {
+
+    color: #ff1616;
+
+}
+
+
+/* =========================================
+   FASE
+========================================= */
+
+.voltar {
+
+    margin-bottom: 15px;
+
+    padding: 8px 13px;
+
+    border: 1px solid #444;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+}
+
+
+.voltar:hover {
+
+    border-color: red;
+
+}
+
+
+/* =========================================
+   CONTAINER DA FASE
+========================================= */
+
+.fase-container {
+
+    display: grid;
+
+    grid-template-columns:
+        270px 1fr;
+
+    gap: 15px;
+
+}
+
+
+/* =========================================
+   MISSÃO
+========================================= */
+
+.missao {
+
+    padding: 20px;
+
+    border: 1px solid #302d35;
+
+    border-radius: 8px;
+
+    background:
+        rgba(18, 17, 22, 0.97);
+
+}
+
+
+.missao h2 {
+
+    margin: 10px 0 18px;
+
+    color: #ff1010;
+
+    font-size: 21px;
+
+}
+
+
+.missao p {
+
+    color: #ccc;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+.missao h3 {
+
+    margin-top: 22px;
+
+    margin-bottom: 10px;
+
+    color: #ff1010;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+}
+
+
+#tarefas {
+
+    list-style: none;
+
+}
+
+
+#tarefas li {
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #29262c;
+
+    color: #ddd;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+}
+
+
+#tarefas li::before {
+
+    content: "▸ ";
+
+    color: red;
+
+}
+
+
+.botoes-missao {
+
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 15px;
+
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+
+    padding: 10px 15px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #e50909;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+button:hover {
+
+    background: #ff2020;
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 0, 0, 0.4);
+
+}
+
+
+.botao-secundario {
+
+    background: #252229;
+
+}
+
+
+.botao-secundario:hover {
+
+    background: #37323d;
+
+}
+
+
+/* =========================================
+   DICAS / GABARITO
+========================================= */
+
+.caixa-ajuda {
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border-left: 3px solid red;
+
+    background: #151319;
+
+    color: #aaa;
+
+    font-family: Consolas, monospace;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   EDITOR
+========================================= */
+
+.editor {
+
+    min-width: 0;
+
+}
+
+
+.editor-topo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: #888;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+textarea {
+
+    width: 100%;
+
+    height: 390px;
+
+    padding: 18px;
+
+    resize: vertical;
+
+    outline: none;
+
+    border: 1px solid #36323a;
+
+    border-radius: 7px;
+
+    background: #0c0b0f;
+
+    color: #eee;
+
+    font-family: Consolas, monospace;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+textarea:focus {
+
+    border-color: red;
+
+    box-shadow:
+        0 0 10px
+        rgba(255, 0, 0, 0.2);
+
+}
+
+
+/* =========================================
+   BOTÕES DO EDITOR
+========================================= */
+
+.botoes {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* =========================================
+   MENSAGEM
+========================================= */
+
+.mensagem {
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+}
+
+
+.mensagem.sucesso {
+
+    border: 1px solid #00ff88;
+
+    background:
+        rgba(0, 255, 120, 0.08);
+
+    color: #00ff88;
+
+}
+
+
+.mensagem.erro {
+
+    border: 1px solid red;
+
+    background:
+        rgba(255, 0, 0, 0.08);
+
+    color: #ff5555;
+
+}
+
+
+/* =========================================
+   SAÍDA
+========================================= */
+
+.saida-titulo {
+
+    margin-top: 20px;
+
+    margin-bottom: 8px;
+
+    color: #888;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.saida {
+
+    min-height: 140px;
+
+    padding: 15px;
+
+    overflow: auto;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: black;
+
+    font-family: Consolas, monospace;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   RODAPÉ
+========================================= */
+
+footer {
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color: #666;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 800px) {
+
+    .mapa {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .fase-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    h1 {
+
+        font-size: 40px;
+
+    }
+
+}

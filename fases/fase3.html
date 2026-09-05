@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Stranger Code - Capítulo 3
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+
+    <section class="tela">
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                CAPÍTULO TRÊS
+            </p>
+
+        </header>
+
+
+        <a
+            href="../index.html"
+            class="voltar"
+        >
+            ← Voltar ao mapa
+        </a>
+
+
+        <div class="fase-container">
+
+
+            <!-- MISSÃO -->
+
+            <div class="missao">
+
+                <span class="numero">
+                    CAPÍTULO TRÊS
+                </span>
+
+
+                <h2>
+                    O Cálculo do Dano
+                </h2>
+
+
+                <p>
+O Demogorgon está se aproximando.
+
+Mike precisa calcular quanto dano
+a equipe consegue causar.
+
+Para isso, você precisa criar
+uma função.
+                </p>
+
+
+                <h3>
+                    SUA MISSÃO
+                </h3>
+
+
+                <ul id="tarefas">
+
+                    <li>
+                        Crie uma função chamada
+                        calcularDano.
+                    </li>
+
+                    <li>
+                        Receba dois parâmetros:
+                        força e multiplicador.
+                    </li>
+
+                    <li>
+                        Calcule o dano.
+                    </li>
+
+                    <li>
+                        Use return para devolver
+                        o resultado.
+                    </li>
+
+                    <li>
+                        Chame a função e mostre
+                        o resultado.
+                    </li>
+
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+
+Uma função pode receber parâmetros:
+
+function calcularDano(
+    forca,
+    multiplicador
+) {
+
+    return forca * multiplicador;
+
+}
+
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+
+function calcularDano(
+    forca,
+    multiplicador
+) {
+
+    let dano =
+        forca * multiplicador;
+
+    return dano;
+
+}
+
+
+let resultado =
+calcularDano(
+    10,
+    2
+);
+
+
+document.write(
+    "Dano causado: " +
+    resultado
+);
+
+                </div>
+
+            </div>
+
+
+            <!-- EDITOR -->
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                >// =================================
+// CAPÍTULO 3
+// O CÁLCULO DO DANO
+// =================================
+
+
+// TODO 1:
+// Crie uma função chamada
+// calcularDano
+
+
+// TODO 2:
+// Receba os parâmetros:
+// forca e multiplicador
+
+
+// TODO 3:
+// Calcule o dano
+
+
+// TODO 4:
+// Use return
+
+
+// TODO 5:
+// Chame a função e mostre
+// o resultado</textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ✓ Verificar fase
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+
+                    SAÍDA DO PROGRAMA
+
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+
+            Stranger Code • Hawkins, Indiana
+
+        </footer>
+
+    </section>
+
+
+    <script src="../js/fase3.js"></script>
+
+</body>
+
+</html>

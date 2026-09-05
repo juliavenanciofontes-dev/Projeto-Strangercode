@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Stranger Code - Batalha Final
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+
+    <section class="tela">
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                ⚠ BATALHA FINAL
+            </p>
+
+        </header>
+
+
+        <a
+            href="../index.html"
+            class="voltar"
+        >
+            ← Voltar ao mapa
+        </a>
+
+
+        <div class="fase-container">
+
+
+            <div class="missao">
+
+                <span class="numero">
+                    ⚠ BATALHA FINAL
+                </span>
+
+
+                <h2>
+                    Vecna e o Mundo Invertido
+                </h2>
+
+
+                <p>
+Você chegou ao Mundo Invertido.
+
+Vecna está esperando.
+
+Para derrotá-lo, você precisará usar
+tudo o que aprendeu.
+                </p>
+
+
+                <h3>SUA MISSÃO</h3>
+
+
+                <ul id="tarefas">
+
+                    <li>
+                        Use variáveis.
+                    </li>
+
+                    <li>
+                        Use prompt().
+                    </li>
+
+                    <li>
+                        Use if e else.
+                    </li>
+
+                    <li>
+                        Crie uma função com return.
+                    </li>
+
+                    <li>
+                        Use while e for.
+                    </li>
+
+                    <li>
+                        Use um vetor.
+                    </li>
+
+                    <li>
+                        Use getElementById()
+                        e addEventListener().
+                    </li>
+
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+
+Use tudo o que aprendeu:
+
+• prompt()
+• parseInt()
+• if / else
+• function
+• return
+• while
+• for
+• vetor
+• HTML + JavaScript
+
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+
+let jogador =
+prompt("Seu nome");
+
+
+let forca =
+parseInt(
+    prompt("Sua força")
+);
+
+
+let vidaVecna = 100;
+
+
+let itens = [
+    "espada",
+    "lanterna"
+];
+
+
+function calcularDano(
+    forca
+) {
+
+    if (forca > 5) {
+
+        return forca * 2;
+
+    }
+
+    else {
+
+        return forca;
+
+    }
+
+}
+
+
+let dano =
+calcularDano(forca);
+
+
+while (
+    vidaVecna > 0
+) {
+
+    vidaVecna -= dano;
+
+    document.write(
+        "Vida do Vecna: " +
+        vidaVecna +
+        "&lt;br&gt;"
+    );
+
+}
+
+
+for (
+    let i = 0;
+    i < itens.length;
+    i++
+) {
+
+    console.log(
+        itens[i]
+    );
+
+}
+
+
+let botao =
+document.getElementById(
+    "luzes"
+);
+
+
+botao.addEventListener(
+    "click",
+    function() {
+
+        alert(
+            "Vecna foi derrotado!"
+        );
+
+    }
+);
+
+                </div>
+
+            </div>
+
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                >// BATALHA FINAL
+// VECNA
+
+
+// TODO 1:
+// Use prompt()
+
+
+// TODO 2:
+// Use parseInt()
+
+
+// TODO 3:
+// Use if e else
+
+
+// TODO 4:
+// Crie uma function
+// usando return
+
+
+// TODO 5:
+// Use while e for
+
+
+// TODO 6:
+// Crie um vetor
+
+
+// TODO 7:
+// Use getElementById()
+
+
+// TODO 8:
+// Use addEventListener()</textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ⚔ Verificar batalha
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+
+                    <button
+                        id="luzes"
+                        class="botao-secundario"
+                    >
+                        ⚡ Atacar Vecna
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+                    SAÍDA DA BATALHA
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Stranger Code • Mundo Invertido
+        </footer>
+
+    </section>
+
+
+    <script src="../js/fase7.js"></script>
+
+</body>
+
+</html>

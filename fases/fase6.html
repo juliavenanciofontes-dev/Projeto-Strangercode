@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Stranger Code - Capítulo 6
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="background"></div>
+
+
+    <section class="tela">
+
+        <header>
+
+            <h1>STRANGER CODE</h1>
+
+            <p class="subtitle">
+                CAPÍTULO SEIS
+            </p>
+
+        </header>
+
+
+        <a
+            href="../index.html"
+            class="voltar"
+        >
+            ← Voltar ao mapa
+        </a>
+
+
+        <div class="fase-container">
+
+
+            <div class="missao">
+
+                <span class="numero">
+                    CAPÍTULO SEIS
+                </span>
+
+
+                <h2>
+                    As Luzes da Joyce
+                </h2>
+
+
+                <p>
+Joyce descobriu que as luzes de Natal
+podem ser usadas para se comunicar
+com Will.
+
+Agora você precisa programar
+as luzes usando JavaScript.
+                </p>
+
+
+                <h3>SUA MISSÃO</h3>
+
+
+                <ul id="tarefas">
+
+                    <li>
+                        Encontre um elemento usando
+                        getElementById().
+                    </li>
+
+                    <li>
+                        Use addEventListener().
+                    </li>
+
+                    <li>
+                        Faça algo acontecer ao clicar.
+                    </li>
+
+                </ul>
+
+
+                <div class="botoes-missao">
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarDica()"
+                    >
+                        💡 Ver dica
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="mostrarGabarito()"
+                    >
+                        📖 Ver gabarito
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="dica"
+                    class="caixa-ajuda escondida"
+                >
+
+let botao =
+document.getElementById(
+    "luzes"
+);
+
+
+botao.addEventListener(
+    "click",
+    function() {
+
+        // código aqui
+
+    }
+);
+
+                </div>
+
+
+                <div
+                    id="gabarito"
+                    class="caixa-ajuda escondida"
+                >
+
+let botao =
+document.getElementById(
+    "luzes"
+);
+
+
+botao.addEventListener(
+    "click",
+    function() {
+
+        document.body.style.background =
+            "red";
+
+    }
+);
+
+                </div>
+
+            </div>
+
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                >// CAPÍTULO 6
+// AS LUZES DA JOYCE
+
+
+// TODO:
+// Use getElementById()
+
+
+// TODO:
+// Use addEventListener()
+
+
+// TODO:
+// Faça algo acontecer
+// quando o botão for clicado</textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ✓ Verificar fase
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+
+                    <button
+                        id="luzes"
+                        class="botao-secundario"
+                    >
+                        💡 Testar luzes
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+                    SAÍDA DO PROGRAMA
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            Stranger Code • Hawkins, Indiana
+        </footer>
+
+    </section>
+
+
+    <script src="../js/fase6.js"></script>
+
+</body>
+
+</html>
