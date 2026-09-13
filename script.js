@@ -817,39 +817,12 @@ let dano = 20;
 // ABRIR FASE
 // ============================================================
 
+
 function abrirFase(numero) {
-
-    // A fase 1 sempre está disponível
-
-    if (numero === 1) {
-
-        carregarFase(numero);
-
-        return;
-
-    }
-
-
-    // Verifica se a fase anterior foi concluída
-
-    if (
-        !progresso["fase" + (numero - 1)]
-    ) {
-
-        alert(
-            "🔒 Essa fase ainda está bloqueada!\n\n" +
-            "Complete a fase anterior primeiro."
-        );
-
-        return;
-
-    }
-
 
     carregarFase(numero);
 
 }
-
 
 // ============================================================
 // CARREGAR FASE
@@ -1498,25 +1471,20 @@ function atualizarMapa() {
 
     let concluidas = 0;
 
-
+    // Conta quantas fases foram concluídas
     for (let i = 1; i <= 7; i++) {
 
-        if (
-            progresso["fase" + i]
-        ) {
-
+        if (progresso["fase" + i]) {
             concluidas++;
-
         }
 
     }
 
-
+    // Atualiza o texto de progresso
     document
         .getElementById("progresso")
         .innerText =
-            concluidas +
-            " de 7 capítulos concluídos";
+            concluidas + " de 7 capítulos concluídos";
 
 
     // ========================================================
@@ -1526,107 +1494,58 @@ function atualizarMapa() {
     for (let i = 1; i <= 7; i++) {
 
         const card =
-            document.getElementById(
-                "card" + i
-            );
-
+            document.getElementById("card" + i);
 
         const status =
-            document.getElementById(
-                "status" + i
-            );
+            document.getElementById("status" + i);
 
 
-        // Fase concluída
+        // ====================================================
+        // FASE CONCLUÍDA
+        // ====================================================
 
-        if (
-            progresso["fase" + i]
-        ) {
-
-            card.className =
-                "card fase-disponivel";
-
-
-            status.innerText =
-                "✓ CONCLUÍDO";
-
-
-            status.style.color =
-                "#00ff88";
-
-
-            status.style.borderColor =
-                "#00ff88";
-
-
-            card.onclick =
-                function() {
-
-                    abrirFase(i);
-
-                };
-
-        }
-
-
-        // Fase disponível
-
-        else if (
-            i === 1 ||
-            progresso["fase" + (i - 1)]
-        ) {
+        if (progresso["fase" + i]) {
 
             card.className =
                 i === 7
                     ? "card boss fase-disponivel"
                     : "card fase-disponivel";
 
+            status.innerText = "✓ CONCLUÍDO";
 
-            status.innerText =
-                "DISPONÍVEL";
+            status.style.color = "#00ff88";
+            status.style.borderColor = "#00ff88";
 
+            card.onclick = function() {
 
-            status.style.color =
-                "#00ff88";
+                abrirFase(i);
 
-
-            status.style.borderColor =
-                "#00ff88";
-
-
-            card.onclick =
-                function() {
-
-                    abrirFase(i);
-
-                };
+            };
 
         }
 
 
-        // Fase bloqueada
+        // ====================================================
+        // FASE DISPONÍVEL
+        // ====================================================
 
         else {
 
             card.className =
                 i === 7
-                    ? "card boss fase-bloqueada"
-                    : "card fase-bloqueada";
+                    ? "card boss fase-disponivel"
+                    : "card fase-disponivel";
 
+            status.innerText = "DISPONÍVEL";
 
-            status.innerText =
-                "🔒 BLOQUEADO";
+            status.style.color = "#00ff88";
+            status.style.borderColor = "#00ff88";
 
+            card.onclick = function() {
 
-            status.style.color =
-                "#777";
+                abrirFase(i);
 
-
-            status.style.borderColor =
-                "#444";
-
-
-            card.onclick = null;
+            };
 
         }
 
