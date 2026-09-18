@@ -99,28 +99,7 @@ const fases = {
             document.write("<br>Waffles: " + waffles);
         `,
 
-        codigo: `// =================================
-// CAPÍTULO 1 - A FICHA DE ONZE
-// =================================
-
-// TODO 1:
-// Pergunte o nome usando prompt()
-// e guarde em uma variável
-
-
-// TODO 2:
-// Pergunte a idade
-// e use parseInt()
-
-
-// TODO 3:
-// Pergunte quantos waffles
-// ela comeu usando parseFloat()
-
-
-// TODO 4:
-// Mostre tudo usando document.write()
-`
+        codigo: ` //Faça o que se pede no exercicio`
 
     },
 
@@ -192,27 +171,7 @@ const fases = {
             }
         `,
 
-        codigo: `// =================================
-// CAPÍTULO 2 - A PORTA DO LABORATÓRIO
-// =================================
-
-// A senha correta é: 011
-
-// TODO 1:
-// Pergunte a senha usando prompt()
-
-
-// TODO 2:
-// Use if para verificar
-// se a senha está correta
-
-
-// TODO 3:
-// Use else caso esteja errada
-
-
-// TODO 4:
-// Mostre uma mensagem
+        codigo: `//Faça o que se pede no exercicio
 `
 
     },
@@ -293,31 +252,7 @@ const fases = {
             );
         `,
 
-        codigo: `// =================================
-// CAPÍTULO 3 - O CÁLCULO DO DANO
-// =================================
-
-// TODO 1:
-// Crie uma função chamada
-// calcularDano()
-
-
-// TODO 2:
-// A função deve receber
-// forca e arma
-
-
-// TODO 3:
-// Use if e else
-
-
-// TODO 4:
-// Use return
-
-
-// TODO 5:
-// Chame a função
-// e mostre o resultado
+        codigo: `//Faça o que se pede no exercicio
 `
 
     },
@@ -397,32 +332,7 @@ const fases = {
             }
         `,
 
-        codigo: `// =================================
-// CAPÍTULO 4 - BATALHA POR TURNOS
-// =================================
-
-let vida = 100;
-
-let dano = 20;
-
-
-// TODO 1:
-// Use while para controlar
-// a batalha
-
-
-// TODO 2:
-// Diminua a vida do inimigo
-
-
-// TODO 3:
-// Mostre a vida após
-// cada ataque
-
-
-// TODO 4:
-// Use for para repetir
-// uma ação várias vezes
+        codigo: `//Faça o que se pede no exercicio
 `
 
     },
@@ -504,30 +414,7 @@ let dano = 20;
             }
         `,
 
-        codigo: `// =================================
-// CAPÍTULO 5 - A MOCHILA DO DUSTIN
-// =================================
-
-// TODO 1:
-// Crie um vetor chamado mochila
-
-
-// TODO 2:
-// Coloque alguns itens dentro dele
-
-
-// TODO 3:
-// Adicione um novo item
-// usando push()
-
-
-// TODO 4:
-// Use for para percorrer
-// o vetor
-
-
-// TODO 5:
-// Mostre os itens
+        codigo: `//Faça o que se pede no exercicio
 `
 
     },
@@ -597,22 +484,7 @@ let dano = 20;
             );
         `,
 
-        codigo: `// =================================
-// CAPÍTULO 6 - AS LUZES DA JOYCE
-// =================================
-
-// TODO 1:
-// Encontre um elemento HTML
-// usando document.getElementById()
-
-
-// TODO 2:
-// Use addEventListener()
-
-
-// TODO 3:
-// Quando o botão for clicado,
-// altere alguma coisa na página
+        codigo: `//Faça o que se pede no exercicio
 `
 
     },
@@ -752,60 +624,7 @@ let dano = 20;
             );
         `,
 
-        codigo: `// ======================================
-// BATALHA FINAL
-// VECNA E O MUNDO INVERTIDO
-// ======================================
-
-
-// TODO 1:
-// Crie o personagem usando prompt()
-
-
-// TODO 2:
-// Crie uma variável para a força
-// usando parseInt()
-
-
-// TODO 3:
-// Crie a vida de Vecna
-
-
-// TODO 4:
-// Crie uma função para calcular
-// o dano
-
-
-// TODO 5:
-// Use if e else
-
-
-// TODO 6:
-// Use return
-
-
-// TODO 7:
-// Crie um vetor de itens
-
-
-// TODO 8:
-// Use while para controlar
-// a batalha
-
-
-// TODO 9:
-// Use for
-
-
-// TODO 10:
-// Use document.getElementById()
-
-
-// TODO 11:
-// Use addEventListener()
-
-
-// DERROTE VECNA!
+        codigo: `//Faça o que se pede no exercicio
 `
 
     }
