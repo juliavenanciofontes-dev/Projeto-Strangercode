@@ -1,7 +1,4 @@
-const codigoInicial =
-    document
-    .getElementById("codigo")
-    .value;
+
 
 
 function mostrarDica() {
@@ -51,13 +48,13 @@ function rodarCodigo() {
 
     const codigo =
         document
-        .getElementById("codigo")
-        .value;
+            .getElementById("codigo")
+            .value;
 
 
     const saida =
         document
-        .getElementById("saida");
+            .getElementById("saida");
 
 
     let resultado = "";
@@ -74,7 +71,7 @@ function rodarCodigo() {
     try {
 
         document.write =
-            function(texto) {
+            function (texto) {
 
                 resultado += texto;
 
@@ -82,7 +79,7 @@ function rodarCodigo() {
 
 
         console.log =
-            function(...dados) {
+            function (...dados) {
 
                 resultado +=
                     dados.join(" ") +
@@ -122,118 +119,70 @@ function rodarCodigo() {
 }
 
 
+
 function verificarCodigo() {
 
-    const codigo =
-        document
+    const codigo = document
         .getElementById("codigo")
-        .value
-        .toLowerCase();
+        .value;
 
+    const mensagem = document
+        .getElementById("mensagem");
+
+    // 1. Remover comentários do código
+    const codigoLimpo = codigo
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*$/gm, "")
+        .toLowerCase();
 
     let erros = [];
 
-
-    if (!codigo.includes("prompt")) {
-
-        erros.push(
-            "Use prompt() para perguntar o nível."
-        );
-
+    // 2. Verificar os comandos necessários
+    if (!/\bprompt\s*\(/.test(codigoLimpo)) {
+        erros.push("Use prompt() para perguntar a senha.");
     }
 
-
-    if (!codigo.includes("parseint")) {
-
-        erros.push(
-            "Use parseInt() para transformar o valor em número."
-        );
-
+    if (!/\bif\s*\(/.test(codigoLimpo)) {
+        erros.push("Use uma estrutura if.");
     }
 
-
-    if (!codigo.includes("if")) {
-
-        erros.push(
-            "Use uma estrutura if."
-        );
-
+    if (!/\belse\b/.test(codigoLimpo)) {
+        erros.push("Use else para a senha incorreta.");
     }
 
-
-    if (!codigo.includes("else")) {
-
-        erros.push(
-            "Use else para a segunda possibilidade."
-        );
-
+    if (!/\bdocument\s*\.\s*write\s*\(/.test(codigoLimpo)) {
+        erros.push("Use document.write() para mostrar o resultado.");
     }
 
-
-    if (
-        !codigo.includes(
-            "document.write"
-        )
-    ) {
-
-        erros.push(
-            "Use document.write() para mostrar o resultado."
-        );
-
-    }
-
-
-    const mensagem =
-        document
-        .getElementById("mensagem");
-
-
+    // 3. Verificar se o código possui erros de sintaxe
     if (erros.length === 0) {
 
-        mensagem.className =
-            "mensagem sucesso";
+        try {
+            new Function(codigo);
 
+        } catch (erro) {
+            erros.push("Seu código possui um erro de sintaxe.");
+        }
+    }
+
+    // 4. Mostrar o resultado da verificação
+    if (erros.length === 0) {
+
+        mensagem.className = "mensagem sucesso";
 
         mensagem.innerHTML =
             "<strong>✓ MISSÃO CONCLUÍDA!</strong>" +
             "<br><br>" +
             "A porta do laboratório foi aberta!";
 
-
         concluirFase();
 
+    } else {
+
+        mensagem.className = "mensagem erro";
+
+        mensagem.innerHTML = erros.join("<br>");
     }
-
-    else {
-
-        mensagem.className =
-            "mensagem erro";
-
-
-        mensagem.innerHTML =
-            erros.join("<br>");
-
-    }
-
 }
 
 
-function concluirFase() {
-
-    let progresso =
-        JSON.parse(
-            localStorage.getItem(
-                "strangerCode"
-            )
-        ) || {};
-
-
-    progresso.fase2 = true;
-
-
-    localStorage.setItem(
-        "strangerCode",
-        JSON.stringify(progresso)
-    );
-
-}

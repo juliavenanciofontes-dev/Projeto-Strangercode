@@ -869,7 +869,7 @@ function carregarFase(numero) {
 
 
     fase.tarefas.forEach(
-        function(tarefa) {
+        function (tarefa) {
 
             const li =
                 document.createElement("li");
@@ -913,7 +913,7 @@ function carregarFase(numero) {
     document
         .getElementById("mensagem")
         .className =
-            "mensagem escondida";
+        "mensagem escondida";
 
 
     document
@@ -990,7 +990,7 @@ function recomecarCodigo() {
     document
         .getElementById("codigo")
         .value =
-            fases[faseAtual].codigo;
+        fases[faseAtual].codigo;
 
 
     document
@@ -1001,7 +1001,7 @@ function recomecarCodigo() {
     document
         .getElementById("mensagem")
         .className =
-            "mensagem escondida";
+        "mensagem escondida";
 
 }
 
@@ -1044,7 +1044,7 @@ function rodarCodigo() {
         // Captura document.write
 
         document.write =
-            function(texto) {
+            function (texto) {
 
                 resultado += texto;
 
@@ -1054,7 +1054,7 @@ function rodarCodigo() {
         // Captura console.log
 
         console.log =
-            function(...dados) {
+            function (...dados) {
 
                 resultado +=
                     dados.join(" ") +
@@ -1125,45 +1125,89 @@ function verificarCodigo() {
     // FASE 1
     // ========================================================
 
+    
+    // ========================================================
+    // FASE 1
+    // ========================================================
+
     if (faseAtual === 1) {
 
-        if (!codigo.includes("let")) {
+        // Remove comentários antes da verificação
+        const codigoLimpo = codigo
+            .replace(/\/\*[\s\S]*?\*\//g, "")
+            .replace(/\/\/.*$/gm, "")
+            .trim();
+
+        // Verifica se o código está vazio
+        if (codigoLimpo === "") {
 
             erros.push(
-                "Declare uma variável usando let."
+                "Escreva o código da ficha antes de verificar."
             );
 
-        }
+        } else {
 
-        if (!codigo.includes("prompt")) {
+            // 1. Verifica se existe uma variável para o nome
+            if (!/\blet\s+nome\s*=/.test(codigoLimpo)) {
 
-            erros.push(
-                "Use prompt() para receber informações."
-            );
+                erros.push(
+                    "Crie uma variável chamada nome usando let."
+                );
 
-        }
+            }
 
-        if (!codigo.includes("parseint")) {
+            // 2. Verifica se o nome recebe uma resposta de prompt()
+            if (!/\bnome\s*=\s*prompt\s*\(|\blet\s+nome\s*=\s*prompt\s*\(/.test(codigoLimpo)) {
 
-            erros.push(
-                "Use parseInt() para converter a idade."
-            );
+                erros.push(
+                    "Use prompt() para perguntar o nome."
+                );
 
-        }
+            }
 
-        if (!codigo.includes("parsefloat")) {
+            // 3. Verifica se a idade é convertida com parseInt()
+            if (!/\blet\s+idade\s*=\s*parseint\s*\(\s*prompt\s*\(/.test(codigoLimpo)) {
 
-            erros.push(
-                "Use parseFloat() para converter os waffles."
-            );
+                erros.push(
+                    "Use parseInt(prompt()) para receber a idade."
+                );
 
-        }
+            }
 
-        if (!codigo.includes("document.write")) {
+            // 4. Verifica se os waffles são convertidos com parseFloat()
+            if (!/\blet\s+waffles\s*=\s*parsefloat\s*\(\s*prompt\s*\(/.test(codigoLimpo)) {
 
-            erros.push(
-                "Use document.write() para mostrar a ficha."
-            );
+                erros.push(
+                    "Use parseFloat(prompt()) para receber a quantidade de waffles."
+                );
+
+            }
+
+            // 5. Verifica se existe document.write()
+            if (!/\bdocument\s*\.\s*write\s*\(/.test(codigoLimpo)) {
+
+                erros.push(
+                    "Use document.write() para mostrar as informações."
+                );
+
+            }
+
+            // 6. Verifica se o código possui erros de sintaxe
+            if (erros.length === 0) {
+
+                try {
+
+                    new Function(codigoLimpo);
+
+                } catch (erro) {
+
+                    erros.push(
+                        "Seu código possui um erro de sintaxe."
+                    );
+
+                }
+
+            }
 
         }
 
@@ -1176,72 +1220,107 @@ function verificarCodigo() {
 
     if (faseAtual === 2) {
 
-        if (!codigo.includes("prompt")) {
+        // Remove comentários antes de verificar o código
+        const codigoSemComentarios = codigo
+            .replace(/\/\*[\s\S]*?\*\//g, "")
+            .replace(/\/\/.*$/gm, "")
+            .trim();
+
+
+        // Verifica se realmente existe prompt()
+        if (!/\bprompt\s*\(/.test(codigoSemComentarios)) {
 
             erros.push(
-                "Use prompt()."
+                "Use prompt() para perguntar a senha."
             );
 
         }
 
-        if (!codigo.includes("if")) {
+
+        // Verifica se realmente existe if
+        if (!/\bif\s*\(/.test(codigoSemComentarios)) {
 
             erros.push(
-                "Você precisa utilizar if."
+                "Você precisa utilizar if para verificar a senha."
             );
 
         }
 
-        if (!codigo.includes("else")) {
+
+        // Verifica se realmente existe else
+        if (!/\belse\b/.test(codigoSemComentarios)) {
 
             erros.push(
-                "Você precisa utilizar else."
+                "Você precisa utilizar else para a senha incorreta."
             );
 
         }
 
-    }
 
-
-    // ========================================================
-    // FASE 3
-    // ========================================================
-
-    if (faseAtual === 3) {
-
-        if (!codigo.includes("function")) {
+        // Verifica se existe document.write()
+        if (!/document\s*\.\s*write\s*\(/.test(codigoSemComentarios)) {
 
             erros.push(
-                "Crie uma função."
+                "Use document.write() para mostrar uma mensagem."
             );
 
         }
 
-        if (!codigo.includes("if")) {
+
+        // Verifica se o código compara com a senha 011
+        if (!/(==|===)\s*["']011["']|["']011["']\s*(==|===)/.test(codigoSemComentarios)) {
 
             erros.push(
-                "Use if dentro da lógica."
-            );
-
-        }
-
-        if (!codigo.includes("else")) {
-
-            erros.push(
-                "Use else."
-            );
-
-        }
-
-        if (!codigo.includes("return")) {
-
-            erros.push(
-                "A função precisa utilizar return."
+                "Verifique a senha correta: 011."
             );
 
         }
 
     }
+
+
+// ========================================================
+// FASE 3
+// ========================================================
+
+if (faseAtual === 3) {
+
+    // Verifica se criou a função calcularDano
+    if (!/function\s+calcularDano\s*\(/.test(codigo)) {
+        erros.push(
+            "Crie uma função chamada calcularDano()."
+        );
+    }
+
+    // Verifica se utilizou if
+    if (!/\bif\s*\(/.test(codigo)) {
+        erros.push(
+            "Use if dentro da lógica da função."
+        );
+    }
+
+    // Verifica se utilizou else
+    if (!/\belse\b/.test(codigo)) {
+        erros.push(
+            "Use else para completar a lógica."
+        );
+    }
+
+    // Verifica se utilizou return
+    if (!/\breturn\b/.test(codigo)) {
+        erros.push(
+            "A função precisa utilizar return."
+        );
+    }
+
+    // Verifica se chamou a função
+    if (!/\bcalcularDano\s*\(/.test(codigo)) {
+        erros.push(
+            "Chame a função calcularDano()."
+        );
+    }
+}
+
 
 
     // ========================================================
@@ -1250,19 +1329,98 @@ function verificarCodigo() {
 
     if (faseAtual === 4) {
 
-        if (!codigo.includes("while")) {
+        // 1. Remover comentários do código
+        const codigoLimpo = codigo
+            .replace(/\/\*[\s\S]*?\*\//g, "")
+            .replace(/\/\/.*$/gm, "")
+            .trim();
+
+
+        // 2. Verificar se o código está vazio
+        if (codigoLimpo === "") {
 
             erros.push(
-                "Use while para controlar a batalha."
+                "Escreva o código da batalha antes de verificar."
             );
 
         }
 
-        if (!codigo.includes("for")) {
+
+        // 3. Verificar se existe um loop while
+        if (!/\bwhile\s*\(/.test(codigoLimpo)) {
 
             erros.push(
-                "Use for para repetir uma ação."
+                "Use while() para controlar a batalha."
             );
+
+        }
+
+
+        // 4. Verificar se existe um loop for
+        if (!/\bfor\s*\(/.test(codigoLimpo)) {
+
+            erros.push(
+                "Use for() para repetir os ataques."
+            );
+
+        }
+
+
+        // 5. Verificar se existe uma variável de vida
+        if (!/\b(?:let|const|var)\s+vida\b/.test(codigoLimpo)) {
+
+            erros.push(
+                "Crie uma variável para a vida do inimigo."
+            );
+
+        }
+
+
+        // 6. Verificar se existe uma variável de dano
+        if (!/\b(?:let|const|var)\s+dano\b/.test(codigoLimpo)) {
+
+            erros.push(
+                "Crie uma variável para o dano."
+            );
+
+        }
+
+
+        // 7. Verificar se o código diminui a vida
+        if (!/(?:vida\s*[-]=|vida\s*=\s*vida\s*-)/.test(codigoLimpo)) {
+
+            erros.push(
+                "Diminua a vida do inimigo a cada ataque."
+            );
+
+        }
+
+
+        // 8. Verificar se existe uma saída
+        if (!/document\s*\.\s*write\s*\(/.test(codigoLimpo)
+            && !/console\s*\.\s*log\s*\(/.test(codigoLimpo)) {
+
+            erros.push(
+                "Mostre o resultado usando document.write() ou console.log()."
+            );
+
+        }
+
+
+        // 9. Verificar erros de sintaxe
+        if (erros.length === 0) {
+
+            try {
+
+                new Function(codigoLimpo);
+
+            } catch (erro) {
+
+                erros.push(
+                    "Seu código possui um erro de sintaxe."
+                );
+
+            }
 
         }
 
@@ -1270,39 +1428,32 @@ function verificarCodigo() {
 
 
     // ========================================================
-    // FASE 5
-    // ========================================================
+// FASE 5
+// ========================================================
 
-    if (faseAtual === 5) {
+if (faseAtual === 5) {
 
-        if (
-            !codigo.includes("[") ||
-            !codigo.includes("]")
-        ) {
-
-            erros.push(
-                "Crie um vetor usando []."
-            );
-
-        }
-
-        if (!codigo.includes("push")) {
-
-            erros.push(
-                "Use push() para adicionar um item."
-            );
-
-        }
-
-        if (!codigo.includes("for")) {
-
-            erros.push(
-                "Use for para percorrer o vetor."
-            );
-
-        }
-
+    // Verifica se criou um vetor
+    if (!/=\s*\[/.test(codigo)) {
+        erros.push(
+            "Crie um vetor utilizando []."
+        );
     }
+
+    // Verifica se utilizou push()
+    if (!/\.push\s*\(/.test(codigo)) {
+        erros.push(
+            "Use push() para adicionar um item ao vetor."
+        );
+    }
+
+    // Verifica se utilizou for
+    if (!/\bfor\s*\(/.test(codigo)) {
+        erros.push(
+            "Use for para percorrer o vetor."
+        );
+    }
+}
 
 
     // ========================================================
@@ -1376,7 +1527,7 @@ function verificarCodigo() {
 
 
         requisitos.forEach(
-            function(requisito) {
+            function (requisito) {
 
                 if (
                     !codigo.includes(requisito)
@@ -1484,7 +1635,7 @@ function atualizarMapa() {
     document
         .getElementById("progresso")
         .innerText =
-            concluidas + " de 7 capítulos concluídos";
+        concluidas + " de 7 capítulos concluídos";
 
 
     // ========================================================
@@ -1516,7 +1667,7 @@ function atualizarMapa() {
             status.style.color = "#00ff88";
             status.style.borderColor = "#00ff88";
 
-            card.onclick = function() {
+            card.onclick = function () {
 
                 abrirFase(i);
 
@@ -1541,7 +1692,7 @@ function atualizarMapa() {
             status.style.color = "#00ff88";
             status.style.borderColor = "#00ff88";
 
-            card.onclick = function() {
+            card.onclick = function () {
 
                 abrirFase(i);
 
@@ -1560,7 +1711,7 @@ function atualizarMapa() {
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
 
         atualizarMapa();
 

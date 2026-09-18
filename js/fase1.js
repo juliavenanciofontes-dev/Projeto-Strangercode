@@ -1,7 +1,4 @@
-const codigoInicial =
-    document
-    .getElementById("codigo")
-    .value;
+
 
 
 function mostrarDica() {
@@ -215,22 +212,3 @@ function verificarCodigo() {
 }
 
 
-function concluirFase() {
-
-    let progresso =
-        JSON.parse(
-            localStorage.getItem(
-                "strangerCode"
-            )
-        ) || {};
-
-
-    progresso.fase1 = true;
-
-
-    localStorage.setItem(
-        "strangerCode",
-        JSON.stringify(progresso)
-    );
-
-}

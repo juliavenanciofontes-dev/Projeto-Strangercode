@@ -1,6 +1,14 @@
-const codigoInicial =
-    document.getElementById("codigo").value;
 
+// ============================================================
+// STRANGER CODE - FASE 4
+// ============================================================
+
+
+
+
+// ============================================================
+// MOSTRAR DICA
+// ============================================================
 
 function mostrarDica() {
 
@@ -11,6 +19,10 @@ function mostrarDica() {
 }
 
 
+// ============================================================
+// MOSTRAR GABARITO
+// ============================================================
+
 function mostrarGabarito() {
 
     document
@@ -20,168 +32,202 @@ function mostrarGabarito() {
 }
 
 
+// ============================================================
+// RECOMEÇAR CÓDIGO
+// ============================================================
+
 function recomecarCodigo() {
 
     document
         .getElementById("codigo")
         .value = codigoInicial;
 
-
     document
         .getElementById("saida")
         .innerHTML = "";
 
-
     document
         .getElementById("mensagem")
-        .className =
-        "mensagem escondida";
+        .className = "mensagem escondida";
 
 }
 
+
+// ============================================================
+// RODAR CÓDIGO
+// ============================================================
 
 function rodarCodigo() {
 
     const codigo =
-        document
-        .getElementById("codigo")
-        .value;
-
+        document.getElementById("codigo").value;
 
     const saida =
-        document
-        .getElementById("saida");
-
+        document.getElementById("saida");
 
     let resultado = "";
 
-
-    const writeOriginal =
-        document.write;
-
-
-    const logOriginal =
-        console.log;
-
+    const writeOriginal = document.write;
+    const logOriginal = console.log;
 
     try {
 
-        document.write =
-            function(texto) {
+        document.write = function(texto) {
+            resultado += texto;
+        };
 
-                resultado += texto;
-
-            };
-
-
-        console.log =
-            function(...dados) {
-
-                resultado +=
-                    dados.join(" ") +
-                    "<br>";
-
-            };
-
+        console.log = function(...dados) {
+            resultado += dados.join(" ") + "<br>";
+        };
 
         new Function(codigo)();
 
+        saida.innerHTML =
+            resultado || "Código executado sem saída.";
+
+    } catch (erro) {
 
         saida.innerHTML =
-            resultado ||
-            "Código executado sem saída.";
+            "Erro: " + erro.message;
 
-    }
+    } finally {
 
-    catch (erro) {
-
-        saida.innerHTML =
-            "Erro: " +
-            erro.message;
-
-    }
-
-    finally {
-
-        document.write =
-            writeOriginal;
-
-        console.log =
-            logOriginal;
+        document.write = writeOriginal;
+        console.log = logOriginal;
 
     }
 
 }
 
 
+// ============================================================
+// VERIFICAR CÓDIGO
+// ============================================================
+
 function verificarCodigo() {
 
     const codigo =
-        document
-        .getElementById("codigo")
-        .value
-        .toLowerCase();
+        document.getElementById("codigo").value;
 
+    const mensagem =
+        document.getElementById("mensagem");
 
     let erros = [];
 
 
-    if (!codigo.includes("while")) {
+    // --------------------------------------------------------
+    // 1. REMOVER COMENTÁRIOS
+    // --------------------------------------------------------
+
+    const codigoLimpo = codigo
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*$/gm, "")
+        .trim();
+
+
+    // --------------------------------------------------------
+    // 2. VERIFICAR SE O CÓDIGO ESTÁ VAZIO
+    // --------------------------------------------------------
+
+    if (codigoLimpo === "") {
 
         erros.push(
-            "Use um loop while."
+            "Escreva o código da batalha antes de verificar."
         );
 
     }
 
 
-    if (!codigo.includes("for")) {
+    // --------------------------------------------------------
+    // 3. VERIFICAR A ESTRUTURA DA BATALHA
+    // --------------------------------------------------------
+
+    if (!/\bwhile\s*\(/.test(codigoLimpo)) {
 
         erros.push(
-            "Use um loop for."
+            "Use while() para controlar a batalha."
+        );
+
+    }
+
+    if (!/\bfor\s*\(/.test(codigoLimpo)) {
+
+        erros.push(
+            "Use for() para repetir os ataques."
+        );
+
+    }
+
+    if (!/\bvida\b/.test(codigoLimpo)) {
+
+        erros.push(
+            "Crie uma variável para a vida do inimigo."
+        );
+
+    }
+
+    if (!/\bdano\b/.test(codigoLimpo)) {
+
+        erros.push(
+            "Crie uma variável para representar o dano."
+        );
+
+    }
+
+    if (!/document\s*\.\s*write\s*\(/.test(codigoLimpo)) {
+
+        erros.push(
+            "Use document.write() para mostrar o resultado."
         );
 
     }
 
 
-    if (
-        !codigo.includes("vida")
-    ) {
+    // --------------------------------------------------------
+    // 4. VERIFICAR ERROS DE SINTAXE
+    // --------------------------------------------------------
 
-        erros.push(
-            "Crie uma variável de vida."
-        );
+    if (erros.length === 0) {
+
+        try {
+
+            new Function(codigo);
+
+        } catch (erro) {
+
+            erros.push(
+                "Seu código possui um erro de sintaxe."
+            );
+
+        }
 
     }
 
 
-    const mensagem =
-        document
-        .getElementById("mensagem");
-
+    // --------------------------------------------------------
+    // 5. MOSTRAR RESULTADO
+    // --------------------------------------------------------
 
     if (erros.length === 0) {
 
         mensagem.className =
             "mensagem sucesso";
 
-
         mensagem.innerHTML =
-            "<strong>✓ MISSÃO CONCLUÍDA!</strong><br><br>" +
+            "<strong>✓ MISSÃO CONCLUÍDA!</strong>" +
+            "<br><br>" +
             "O Demogorgon foi derrotado!";
-
 
         concluirFase();
 
-    }
-
-    else {
+    } else {
 
         mensagem.className =
             "mensagem erro";
 
-
         mensagem.innerHTML =
+            "<strong>✗ Ainda não!</strong>" +
+            "<br><br>" +
             erros.join("<br>");
 
     }
@@ -189,22 +235,3 @@ function verificarCodigo() {
 }
 
 
-function concluirFase() {
-
-    let progresso =
-        JSON.parse(
-            localStorage.getItem(
-                "strangerCode"
-            )
-        ) || {};
-
-
-    progresso.fase4 = true;
-
-
-    localStorage.setItem(
-        "strangerCode",
-        JSON.stringify(progresso)
-    );
-
-}
