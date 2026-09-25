@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -64,12 +65,15 @@
 
 
                 <p>
-Joyce descobriu que as luzes de Natal
-podem ser usadas para se comunicar
-com Will.
-
-Agora você precisa programar
-as luzes usando JavaScript.
+                    Joyce descobriu que as luzes de Natal
+                    podem ser usadas para se comunicar
+                    com Will.
+                    <br><br>
+                    Agora você precisa programar
+                    a lâmpada usando JavaScript.
+                    <br><br>
+                    A cada clique no botão, a lâmpada
+                    deve trocar entre acesa e apagada.
                 </p>
 
 
@@ -79,20 +83,43 @@ as luzes usando JavaScript.
                 <ul id="tarefas">
 
                     <li>
-                        Encontre um elemento usando
-                        getElementById().
+                        Encontre a lâmpada usando
+                        <b>document.getElementById("lampada")</b>.
                     </li>
 
                     <li>
-                        Use addEventListener().
+                        Crie uma função chamada
+                        <b>mudarLuz()</b>.
                     </li>
 
                     <li>
-                        Faça algo acontecer ao clicar.
+                        Dentro da função, use
+                        <b>if e else</b> para verificar
+                        se a lâmpada está acesa ou apagada.
+                    </li>
+
+                    <li>
+                        Use <b>.src</b> para trocar a imagem
+                        da lâmpada.
+                    </li>
+
+                    <li>
+                        Para acender, use a imagem
+                        <b>assents/lampada-acesa.png</b>.
+                    </li>
+
+                    <li>
+                        Para apagar, use a imagem
+                        <b>assents/lampada-apagada.png</b>.
+                    </li>
+
+                    <li>
+                        O botão já está configurado para chamar
+                        a função <b>mudarLuz()</b> usando
+                        <b>onclick</b>. Você não precisa criar o botão.
                     </li>
 
                 </ul>
-
 
                 <div class="botoes-missao">
 
@@ -119,46 +146,89 @@ as luzes usando JavaScript.
                     class="caixa-ajuda escondida"
                 >
 
-let botao =
-document.getElementById(
-    "luzes"
-);
+                    let lampada =
+                    document.getElementById("lampada");
 
+                    <br><br>
 
-botao.addEventListener(
-    "click",
-    function() {
+                    function mudarLuz() {
 
-        // código aqui
+                    <br>
 
-    }
-);
+                    &nbsp;&nbsp;&nbsp;&nbsp;if (...) {
+
+                    <br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+                    troque para a imagem acesa
+
+                    <br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;} else {
+
+                    <br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+                    troque para a imagem apagada
+
+                    <br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;}
+
+                    <br>
+
+                    }
+
+                    <br><br>
+
+                    O botão deve chamar a função usando
+                    <b>onclick</b>.
 
                 </div>
 
 
-                <div
-                    id="gabarito"
-                    class="caixa-ajuda escondida"
-                >
+             
+            <div
+                id="gabarito"
+                class="caixa-ajuda escondida"
+            >
 
-let botao =
-document.getElementById(
-    "luzes"
-);
+                let lampada =
+                document.getElementById("lampada");
 
+                <br><br>
 
-botao.addEventListener(
-    "click",
-    function() {
+                function mudarLuz() {
 
-        document.body.style.background =
-            "red";
+                <br>
 
-    }
-);
+                &nbsp;&nbsp;&nbsp;&nbsp;if
+                (lampada.src.includes("apagada")) {
 
-                </div>
+                <br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                lampada.src = "../assents/lampada-acesa.png";
+
+                <br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;} else {
+
+                <br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                lampada.src = "../assents/lampada-apagada.png";
+
+                <br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;}
+
+                <br>
+
+                }
+
+            </div>
+
 
             </div>
 
@@ -207,6 +277,7 @@ botao.addEventListener(
                     <button
                         id="luzes"
                         class="botao-secundario"
+                        onclick="testarLuzes()"
                     >
                         💡 Testar luzes
                     </button>
@@ -221,14 +292,29 @@ botao.addEventListener(
 
 
                 <div class="saida-titulo">
-                    SAÍDA DO PROGRAMA
+                    LUZES DA JOYCE
                 </div>
 
 
-                <div
-                    id="saida"
-                    class="saida"
-                ></div>
+                <div class="saida">
+
+                    <img
+                        id="lampada"
+                        src="../img/lampada-apagada.png"
+                        alt="Lâmpada apagada"
+                    >
+
+                    <br><br>
+
+                    <button
+                        id="botaoLuz"
+                        onclick="mudarLuz()"
+                    >
+                        💡 Acender / Apagar
+                    </button>
+
+                </div>
+
 
             </div>
 
@@ -247,3 +333,4 @@ botao.addEventListener(
 </body>
 
 </html>
+

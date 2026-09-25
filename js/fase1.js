@@ -131,13 +131,16 @@ function verificarCodigo() {
     let erros = [];
 
 
-    if (!codigo.includes("let")) {
+    if (
+    !codigo.includes("let") &&
+    !codigo.includes("var")
+) {
 
-        erros.push(
-            "Declare uma variável usando let."
-        );
+    erros.push(
+        "Declare uma variável usando let ou var."
+    );
 
-    }
+}
 
 
     if (!codigo.includes("prompt")) {

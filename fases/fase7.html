@@ -1,4 +1,6 @@
+```html
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -64,12 +66,16 @@
 
 
                 <p>
-Você chegou ao Mundo Invertido.
 
-Vecna está esperando.
+                    Você chegou ao coração do Mundo Invertido.
 
-Para derrotá-lo, você precisará usar
-tudo o que aprendeu.
+                    Vecna está diante de você e o portal
+                    está prestes a ser aberto.
+
+                    Para derrotá-lo, você precisará construir
+                    seu próprio sistema de batalha usando
+                    tudo o que aprendeu.
+
                 </p>
 
 
@@ -79,32 +85,71 @@ tudo o que aprendeu.
                 <ul id="tarefas">
 
                     <li>
-                        Use variáveis.
+                        Crie variáveis para representar o
+                        jogador e a vida de Vecna.
                     </li>
 
                     <li>
-                        Use prompt().
+                        No HTML, crie um
+                        <code>input</code>
+                        para informar a força do ataque.
                     </li>
 
                     <li>
-                        Use if e else.
+                        Crie um
+                        <code>button</code>
+                        para realizar o ataque e um
+                        <code>p</code>
+                        para mostrar o resultado.
                     </li>
 
                     <li>
-                        Crie uma função com return.
+                        Use
+                        <code>document.getElementById()</code>
+                        para acessar os elementos da página.
                     </li>
 
                     <li>
-                        Use while e for.
+                        Use
+                        <code>.value</code>
+                        para pegar o valor digitado no input
+                        e converta-o para número.
                     </li>
 
                     <li>
-                        Use um vetor.
+                        Crie uma função que receba a força
+                        do ataque, calcule o dano e utilize
+                        <code>return</code>.
                     </li>
 
                     <li>
-                        Use getElementById()
-                        e addEventListener().
+                        A cada ataque, diminua a vida de Vecna
+                        e registre o dano em um vetor.
+                    </li>
+
+                    <li>
+                        Use
+                        <code>if</code>
+                        e
+                        <code>else</code>
+                        para verificar se Vecna foi derrotado.
+                    </li>
+
+                    <li>
+                        Utilize
+                        <code>innerText</code>
+                        ou
+                        <code>innerHTML</code>
+                        para atualizar o resultado na página.
+                    </li>
+
+                    <li>
+                        Use um
+                        <code>for</code>
+                        ou
+                        <code>while</code>
+                        para percorrer o vetor e mostrar
+                        o histórico dos ataques.
                     </li>
 
                 </ul>
@@ -135,17 +180,48 @@ tudo o que aprendeu.
                     class="caixa-ajuda escondida"
                 >
 
-Use tudo o que aprendeu:
+                    Comece pelo HTML!
 
-• prompt()
-• parseInt()
-• if / else
-• function
-• return
-• while
-• for
-• vetor
-• HTML + JavaScript
+                    Pense nos três elementos que o jogador
+                    precisa: um campo para digitar, um botão
+                    para atacar e um elemento para mostrar
+                    o resultado.
+
+                    No JavaScript, lembre-se:
+
+                    • document.getElementById() encontra
+                      elementos da página.
+
+                    • .value pega o que foi digitado no input.
+
+                    • Number() pode converter o valor
+                      para número.
+
+                    • Uma function pode receber a força
+                      do ataque e devolver o dano usando
+                      return.
+
+                    • O vetor pode guardar os ataques
+                      realizados.
+
+                    • if e else podem verificar se Vecna
+                      ainda está vivo.
+
+                    • innerText ou innerHTML podem atualizar
+                      o que aparece na página.
+
+                    • for ou while podem percorrer o vetor
+                      e mostrar o histórico dos ataques.
+
+                    Pense neste caminho:
+
+                    Jogador digita → JavaScript pega o valor →
+                    calcula o dano → diminui a vida de Vecna →
+                    registra o ataque → mostra o resultado
+                    na página.
+
+                    Não esqueça: nesta fase, você não precisa
+                    utilizar prompt() para receber o ataque.
 
                 </div>
 
@@ -155,92 +231,140 @@ Use tudo o que aprendeu:
                     class="caixa-ajuda escondida"
                 >
 
-let jogador =
-prompt("Seu nome");
-
-
-let forca =
-parseInt(
-    prompt("Sua força")
-);
-
-
+<pre><code>
 let vidaVecna = 100;
 
-
-let itens = [
-    "espada",
-    "lanterna"
-];
+let ataques = [];
 
 
-function calcularDano(
-    forca
-) {
-
-    if (forca > 5) {
-
-        return forca * 2;
-
-    }
-
-    else {
-
-        return forca;
-
-    }
-
-}
+const inputAtaque =
+    document.getElementById("forcaAtaque");
 
 
-let dano =
-calcularDano(forca);
+const botaoAtacar =
+    document.getElementById("btnAtacar");
 
 
-while (
-    vidaVecna > 0
-) {
+const resultado =
+    document.getElementById("resultado");
 
-    vidaVecna -= dano;
 
-    document.write(
-        "Vida do Vecna: " +
-        vidaVecna +
-        "&lt;br&gt;"
-    );
+const vidaNaTela =
+    document.getElementById("vidaVecna");
+
+
+const historico =
+    document.getElementById("historico");
+
+
+function calcularDano(forca) {
+
+    return forca * 2;
 
 }
 
 
-for (
-    let i = 0;
-    i < itens.length;
-    i++
-) {
-
-    console.log(
-        itens[i]
-    );
-
-}
-
-
-let botao =
-document.getElementById(
-    "luzes"
-);
-
-
-botao.addEventListener(
+botaoAtacar.addEventListener(
     "click",
     function() {
 
-        alert(
-            "Vecna foi derrotado!"
-        );
+        if (vidaVecna <= 0) {
+
+            resultado.innerText =
+                "Vecna já foi derrotado!";
+
+            return;
+
+        }
+
+
+        let forca =
+            Number(inputAtaque.value);
+
+
+        if (
+            forca <= 0 ||
+            inputAtaque.value === ""
+        ) {
+
+            resultado.innerText =
+                "Digite uma força de ataque válida!";
+
+            return;
+
+        }
+
+
+        let dano =
+            calcularDano(forca);
+
+
+        vidaVecna -= dano;
+
+
+        if (vidaVecna < 0) {
+
+            vidaVecna = 0;
+
+        }
+
+
+        ataques.push(dano);
+
+
+        vidaNaTela.innerText =
+            vidaVecna;
+
+
+        if (vidaVecna === 0) {
+
+            resultado.innerText =
+                "Você derrotou Vecna e fechou o portal!";
+
+            botaoAtacar.disabled = true;
+
+        }
+
+        else {
+
+            resultado.innerText =
+                "Você causou " +
+                dano +
+                " de dano! Vecna ainda possui " +
+                vidaVecna +
+                " de vida.";
+
+        }
+
+
+        let textoHistorico = "";
+
+
+        for (
+            let i = 0;
+            i < ataques.length;
+            i++
+        ) {
+
+            textoHistorico +=
+                "Ataque " +
+                (i + 1) +
+                ": " +
+                ataques[i] +
+                " de dano&lt;br&gt;";
+
+        }
+
+
+        historico.innerHTML =
+            textoHistorico;
+
+
+        inputAtaque.value = "";
 
     }
 );
+</code></pre>
 
                 </div>
 
@@ -256,7 +380,7 @@ botao.addEventListener(
                     </span>
 
                     <span>
-                        JAVASCRIPT
+                        JAVASCRIPT + HTML
                     </span>
 
                 </div>
@@ -287,14 +411,6 @@ botao.addEventListener(
                         ↻ Recomeçar código
                     </button>
 
-
-                    <button
-                        id="luzes"
-                        class="botao-secundario"
-                    >
-                        ⚡ Atacar Vecna
-                    </button>
-
                 </div>
 
 
@@ -320,7 +436,9 @@ botao.addEventListener(
 
 
         <footer>
+
             Stranger Code • Mundo Invertido
+
         </footer>
 
     </section>
@@ -331,3 +449,4 @@ botao.addEventListener(
 </body>
 
 </html>
+```

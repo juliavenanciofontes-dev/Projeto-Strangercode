@@ -724,3 +724,37 @@ footer {
     border-radius: 6px;
     margin-bottom: 15px;
 }
+
+h1 {
+    animation: piscar 0.8s infinite;
+}
+
+@keyframes piscar {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0.2;
+    }
+
+    35% {
+        opacity: 0.9;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    55% {
+        opacity: 1;
+    }
+}

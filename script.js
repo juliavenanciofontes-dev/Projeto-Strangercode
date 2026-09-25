@@ -99,7 +99,7 @@ const fases = {
             document.write("<br>Waffles: " + waffles);
         `,
 
-        codigo: ` //Faça o que se pede no exercicio`
+        codigo: `//Faça o que se pede no exercicio`
 
     },
 
@@ -424,70 +424,71 @@ const fases = {
     // FASE 6
     // ========================================================
 
-    6: {
+   6: {
+    numero: "CAPÍTULO SEIS",
+    titulo: "As Luzes da Joyce",
 
-        numero: "CAPÍTULO SEIS",
+    historia: `
+        Joyce descobriu que as luzes de Natal
+        podem ser usadas para se comunicar
+        com Will.
 
-        titulo: "As Luzes da Joyce",
+        Agora você precisa programar
+        a lâmpada usando JavaScript.
 
-        historia: `
-            Joyce descobriu que as luzes de Natal
-            podem ser usadas para se comunicar
-            com Will.
+        A cada clique no botão, a lâmpada
+        deve trocar entre acesa e apagada.
+    `,
 
-            Agora você precisa programar as luzes
-            usando JavaScript.
-        `,
+    tarefas: [
+        "Encontre a lâmpada usando getElementById().",
+        "Crie uma função para mudar o estado da lâmpada.",
+        "Use onclick no botão para chamar a função.",
+        "Use if e else para verificar o estado da lâmpada.",
+        "Troque a imagem usando .src."
+    ],
 
-        tarefas: [
+    dica: `
+        let lampada =
+            document.getElementById("lampada");
 
-            "Encontre um elemento HTML usando getElementById().",
+        function mudarLuz() {
 
-            "Use addEventListener().",
+            if (...) {
 
-            "Faça algo acontecer quando o botão for clicado.",
+                // troque para a imagem acesa
 
-            "Modifique um elemento da página."
+            } else {
 
-        ],
+                // troque para a imagem apagada
 
-        dica: `
-            Primeiro encontre o elemento:
+            }
+        }
 
-            let botao =
-                document.getElementById("luzes");
+        O botão deve chamar a função usando onclick.
+    `,
 
-            Depois use:
+    gabarito: `
+        let lampada =
+            document.getElementById("lampada");
 
-            botao.addEventListener(
-                "click",
-                function() {
+        function mudarLuz() {
 
-                    // código
+            if (lampada.src.includes("apagada")) {
 
-                }
-            );
-        `,
+                lampada.src = "assents/lampada-acesa.png";
 
-        gabarito: `
-            let botao =
-                document.getElementById("luzes");
+            } else {
 
-            botao.addEventListener(
-                "click",
-                function() {
+                lampada.src = "assents/lampada-apagada.png";
 
-                    document.body.style.background =
-                        "red";
+            }
+        }
+    `,
 
-                }
-            );
-        `,
-
-        codigo: `//Faça o que se pede no exercicio
+    codigo: `//Faça o que se pede no exercicio
 `
-
-    },
+},
 
 
     // ========================================================
@@ -501,130 +502,327 @@ const fases = {
         titulo: "Vecna e o Mundo Invertido",
 
         historia: `
-            Você chegou ao Mundo Invertido.
+            Você chegou ao coração do Mundo Invertido.
 
-            Vecna está esperando.
+            Vecna está diante de você e o portal
+            está prestes a ser aberto.
 
-            Para derrotá-lo, você precisará utilizar
-            tudo o que aprendeu durante os capítulos
-            anteriores.
-
-            Esta é a batalha final.
+            Para derrotá-lo, você precisará construir
+            seu próprio sistema de batalha utilizando
+            os conhecimentos aprendidos durante
+            os capítulos anteriores.
         `,
 
         tarefas: [
 
-            "Crie variáveis para o jogador e Vecna.",
+            "Crie no HTML um campo input para o jogador informar a força do ataque.",
 
-            "Use prompt() e conversões.",
+            "Crie um button para realizar o ataque.",
 
-            "Use if e else.",
+            "Crie um elemento <p> para mostrar as informações da batalha.",
 
-            "Crie uma função usando return.",
+            "Use document.getElementById() para acessar os elementos HTML.",
 
-            "Use while e for.",
+            "Use .value para pegar o valor digitado no input.",
 
-            "Crie e utilize um vetor.",
+            "Converta o valor recebido para número.",
 
-            "Interaja com elementos HTML usando JavaScript.",
+            "Crie uma função que receba a força do ataque e use return para devolver o dano.",
 
-            "Derrote Vecna!"
+            "Use if e else para verificar o estado da batalha.",
+
+            "Crie um vetor para armazenar os danos dos ataques.",
+
+            "Use push() para adicionar cada ataque ao vetor.",
+
+            "Use for ou while para percorrer o vetor.",
+
+            "Use innerText ou innerHTML para atualizar informações na página.",
+
+            "Use addEventListener() para detectar o clique no botão.",
+
+            "Faça a vida de Vecna diminuir a cada ataque.",
+
+            "Quando a vida chegar a zero, mostre uma mensagem informando que Vecna foi derrotado."
 
         ],
 
         dica: `
-            Você já aprendeu todas essas
-            ferramentas nos capítulos anteriores.
+            Comece pelo HTML!
 
-            Agora você precisa juntá-las.
+            Pense em três elementos principais:
 
-            Pense na batalha como pequenas partes:
+            1. Um input para o jogador digitar
+               a força do ataque.
 
-            1. Criar personagem
-            2. Definir vida
-            3. Calcular dano
-            4. Repetir ataques
-            5. Usar itens
-            6. Interagir com a página
+            2. Um button para realizar o ataque.
+
+            3. Um elemento <p> para mostrar
+               o resultado da batalha.
+
+
+            Depois, no JavaScript:
+
+            • Use document.getElementById()
+              para encontrar os elementos.
+
+            • Use .value para pegar o que
+              foi digitado.
+
+            • Converta esse valor para número.
+
+            • Crie uma função para calcular
+              o dano e use return.
+
+            • Diminua a vida de Vecna.
+
+            • Use if e else para verificar
+              se Vecna ainda está vivo.
+
+            • Crie um vetor para guardar
+              os danos dos ataques.
+
+            • Use push() para registrar
+              cada ataque.
+
+            • Use for ou while para percorrer
+              o vetor.
+
+            • Use innerText ou innerHTML
+              para atualizar a página.
+
+            • Use addEventListener()
+              para detectar o clique.
+
+            IMPORTANTE:
+
+            Nesta fase você NÃO precisa usar prompt()
+            para realizar o ataque.
         `,
 
         gabarito: `
-            // Exemplo de estrutura:
+            <!DOCTYPE html>
+            <html lang="pt-BR">
 
-            let jogador =
-                prompt("Nome do jogador");
+            <head>
 
-            let forca =
-                parseInt(
-                    prompt("Força:")
-                );
+                <meta charset="UTF-8">
 
-            let vidaVecna = 100;
+                <title>
+                    Confronto Final
+                </title>
 
-            let itens = [
-                "espada",
-                "lanterna",
-                "walkie-talkie"
-            ];
+            </head>
 
-            function calcularDano(forca) {
+            <body>
 
-                if (forca > 5) {
+                <h1>⚔️ Confronto Final</h1>
 
-                    return forca * 2;
+                <p>
+                    Vida de Vecna:
+                    <span id="vidaVecna">100</span>
+                </p>
 
-                } else {
+                <label>
+                    Força do ataque:
+                </label>
 
-                    return forca;
+                <input
+                    type="number"
+                    id="forcaAtaque"
+                >
 
-                }
-            }
+                <button id="btnAtacar">
+                    Atacar Vecna
+                </button>
 
-            let dano =
-                calcularDano(forca);
+                <p id="resultado"></p>
 
-            while (vidaVecna > 0) {
+                <h2>
+                    Histórico de ataques
+                </h2>
 
-                vidaVecna =
-                    vidaVecna - dano;
+                <p id="historico"></p>
 
-                document.write(
-                    "Vecna: " +
-                    vidaVecna +
-                    " HP<br>"
-                );
 
-                for (
-                    let i = 0;
-                    i < itens.length;
-                    i++
-                ) {
+                <script>
 
-                    console.log(
-                        itens[i]
+                    let vidaVecna = 100;
+
+                    let ataques = [];
+
+
+                    const inputAtaque =
+                        document.getElementById(
+                            "forcaAtaque"
+                        );
+
+
+                    const botaoAtacar =
+                        document.getElementById(
+                            "btnAtacar"
+                        );
+
+
+                    const resultado =
+                        document.getElementById(
+                            "resultado"
+                        );
+
+
+                    const vidaNaTela =
+                        document.getElementById(
+                            "vidaVecna"
+                        );
+
+
+                    const historico =
+                        document.getElementById(
+                            "historico"
+                        );
+
+
+                    function calcularDano(forca) {
+
+                        return forca * 2;
+
+                    }
+
+
+                    botaoAtacar.addEventListener(
+                        "click",
+                        function () {
+
+                            if (vidaVecna <= 0) {
+
+                                resultado.innerText =
+                                    "Vecna já foi derrotado!";
+
+                                return;
+
+                            }
+
+
+                            let forca =
+                                Number(
+                                    inputAtaque.value
+                                );
+
+
+                            if (
+                                forca <= 0 ||
+                                inputAtaque.value === ""
+                            ) {
+
+                                resultado.innerText =
+                                    "Digite uma força de ataque válida!";
+
+                                return;
+
+                            }
+
+
+                            let dano =
+                                calcularDano(forca);
+
+
+                            vidaVecna =
+                                vidaVecna - dano;
+
+
+                            if (vidaVecna < 0) {
+
+                                vidaVecna = 0;
+
+                            }
+
+
+                            ataques.push(dano);
+
+
+                            vidaNaTela.innerText =
+                                vidaVecna;
+
+
+                            if (vidaVecna === 0) {
+
+                                resultado.innerText =
+                                    "Você derrotou Vecna e fechou o portal do Mundo Invertido!";
+
+                                botaoAtacar.disabled =
+                                    true;
+
+                            } else {
+
+                                resultado.innerText =
+                                    "Você causou " +
+                                    dano +
+                                    " de dano! Vecna ainda possui " +
+                                    vidaVecna +
+                                    " de vida.";
+
+                            }
+
+
+                            let textoHistorico = "";
+
+
+                            for (
+                                let i = 0;
+                                i < ataques.length;
+                                i++
+                            ) {
+
+                                textoHistorico +=
+                                    "Ataque " +
+                                    (i + 1) +
+                                    ": " +
+                                    ataques[i] +
+                                    " de dano<br>";
+
+                            }
+
+
+                            historico.innerHTML =
+                                textoHistorico;
+
+
+                            inputAtaque.value = "";
+
+                        }
                     );
 
-                }
+                </script>
 
-            }
+            </body>
 
-            let botao =
-                document.getElementById(
-                    "luzes"
-                );
-
-            botao.addEventListener(
-                "click",
-                function() {
-
-                    document.body.style.background =
-                        "red";
-
-                }
-            );
+            </html>
         `,
 
-        codigo: `//Faça o que se pede no exercicio
+        codigo: `
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Batalha Final</title>
+</head>
+
+<body>
+
+    <!-- Crie aqui os elementos HTML da sua batalha -->
+
+
+    <script>
+
+        // Escreva aqui o JavaScript da sua batalha
+
+
+    </script>
+
+</body>
+
+</html>
 `
 
     }
@@ -636,12 +834,12 @@ const fases = {
 // ABRIR FASE
 // ============================================================
 
-
 function abrirFase(numero) {
 
     carregarFase(numero);
 
 }
+
 
 // ============================================================
 // CARREGAR FASE
@@ -845,9 +1043,132 @@ function rodarCodigo() {
     saida.innerHTML = "";
 
 
-    try {
+    // ========================================================
+    // FASE 7 - HTML + JAVASCRIPT
+    // ========================================================
 
-        // Guarda os comandos originais
+    if (faseAtual === 7) {
+
+        if (codigo.trim() === "") {
+
+            saida.innerHTML =
+                "Digite seu código antes de rodar!";
+
+            return;
+
+        }
+
+
+        const iframe =
+            document.createElement("iframe");
+
+
+        iframe.style.width = "100%";
+        iframe.style.minHeight = "400px";
+        iframe.style.border = "none";
+        iframe.style.background = "white";
+        iframe.style.borderRadius = "8px";
+
+
+        iframe.setAttribute(
+            "sandbox",
+            "allow-scripts"
+        );
+
+
+        iframe.srcdoc = codigo;
+
+
+        saida.appendChild(iframe);
+
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // FASE 6 - LÂMPADA
+    // ========================================================
+
+    if (faseAtual === 6) {
+
+        saida.innerHTML = `
+            <img
+                id="lampada"
+                src="assents/lampada-apagada.png"
+                alt="Lâmpada apagada"
+                style="max-width: 150px;"
+            >
+
+            <br><br>
+
+            <button
+                id="botaoLuz"
+                onclick="mudarLuz()"
+            >
+                💡 Acender / Apagar
+            </button>
+        `;
+
+
+        try {
+
+            const executar =
+                new Function(
+                    codigo +
+                    `
+                    return typeof mudarLuz === "function"
+                        ? mudarLuz
+                        : null;
+                    `
+                );
+
+
+            const mudarLuzAluno =
+                executar();
+
+
+            if (
+                typeof mudarLuzAluno ===
+                "function"
+            ) {
+
+                window.mudarLuz =
+                    mudarLuzAluno;
+
+                mudarLuz();
+
+            } else {
+
+                saida.innerHTML +=
+                    "<br><br>Crie a função mudarLuz().";
+
+            }
+
+        }
+
+        catch (erro) {
+
+            saida.innerHTML +=
+                `<br><br>
+                <span style="color:red">
+                    Erro: ${erro.message}
+                </span>`;
+
+        }
+
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // FASES 1 A 5
+    // ========================================================
+
+    try {
 
         const writeOriginal =
             document.write;
@@ -860,8 +1181,6 @@ function rodarCodigo() {
         let resultado = "";
 
 
-        // Captura document.write
-
         document.write =
             function (texto) {
 
@@ -869,8 +1188,6 @@ function rodarCodigo() {
 
             };
 
-
-        // Captura console.log
 
         console.log =
             function (...dados) {
@@ -882,16 +1199,12 @@ function rodarCodigo() {
             };
 
 
-        // Executa o código
-
         const funcao =
             new Function(codigo);
 
 
         funcao();
 
-
-        // Restaura
 
         document.write =
             writeOriginal;
@@ -901,28 +1214,22 @@ function rodarCodigo() {
             logOriginal;
 
 
-        // Mostra resultado
-
         saida.innerHTML =
             resultado;
 
 
-    } catch (erro) {
+    }
+
+    catch (erro) {
 
         saida.innerHTML =
             `<span style="color:red">
                 Erro: ${erro.message}
             </span>`;
 
-
-        document.write =
-            document.write;
-
-
     }
 
 }
-
 
 // ============================================================
 // VERIFICAR CÓDIGO
@@ -944,289 +1251,69 @@ function verificarCodigo() {
     // FASE 1
     // ========================================================
 
-    
-    // ========================================================
-    // FASE 1
-    // ========================================================
+   if (faseAtual === 1) {
 
-    if (faseAtual === 1) {
+    const codigoLimpo = codigo
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*$/gm, "")
+        .trim();
 
-        // Remove comentários antes da verificação
-        const codigoLimpo = codigo
-            .replace(/\/\*[\s\S]*?\*\//g, "")
-            .replace(/\/\/.*$/gm, "")
-            .trim();
+    if (codigoLimpo === "") {
 
-        // Verifica se o código está vazio
-        if (codigoLimpo === "") {
-
-            erros.push(
-                "Escreva o código da ficha antes de verificar."
-            );
-
-        } else {
-
-            // 1. Verifica se existe uma variável para o nome
-            if (!/\blet\s+nome\s*=/.test(codigoLimpo)) {
-
-                erros.push(
-                    "Crie uma variável chamada nome usando let."
-                );
-
-            }
-
-            // 2. Verifica se o nome recebe uma resposta de prompt()
-            if (!/\bnome\s*=\s*prompt\s*\(|\blet\s+nome\s*=\s*prompt\s*\(/.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use prompt() para perguntar o nome."
-                );
-
-            }
-
-            // 3. Verifica se a idade é convertida com parseInt()
-            if (!/\blet\s+idade\s*=\s*parseint\s*\(\s*prompt\s*\(/.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use parseInt(prompt()) para receber a idade."
-                );
-
-            }
-
-            // 4. Verifica se os waffles são convertidos com parseFloat()
-            if (!/\blet\s+waffles\s*=\s*parsefloat\s*\(\s*prompt\s*\(/.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use parseFloat(prompt()) para receber a quantidade de waffles."
-                );
-
-            }
-
-            // 5. Verifica se existe document.write()
-            if (!/\bdocument\s*\.\s*write\s*\(/.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use document.write() para mostrar as informações."
-                );
-
-            }
-
-            // 6. Verifica se o código possui erros de sintaxe
-            if (erros.length === 0) {
-
-                try {
-
-                    new Function(codigoLimpo);
-
-                } catch (erro) {
-
-                    erros.push(
-                        "Seu código possui um erro de sintaxe."
-                    );
-
-                }
-
-            }
-
-        }
-
-    }
-
-
-    // ========================================================
-    // FASE 2
-    // ========================================================
-
-    if (faseAtual === 2) {
-
-        // Remove comentários antes de verificar o código
-        const codigoSemComentarios = codigo
-            .replace(/\/\*[\s\S]*?\*\//g, "")
-            .replace(/\/\/.*$/gm, "")
-            .trim();
-
-
-        // Verifica se realmente existe prompt()
-        if (!/\bprompt\s*\(/.test(codigoSemComentarios)) {
-
-            erros.push(
-                "Use prompt() para perguntar a senha."
-            );
-
-        }
-
-
-        // Verifica se realmente existe if
-        if (!/\bif\s*\(/.test(codigoSemComentarios)) {
-
-            erros.push(
-                "Você precisa utilizar if para verificar a senha."
-            );
-
-        }
-
-
-        // Verifica se realmente existe else
-        if (!/\belse\b/.test(codigoSemComentarios)) {
-
-            erros.push(
-                "Você precisa utilizar else para a senha incorreta."
-            );
-
-        }
-
-
-        // Verifica se existe document.write()
-        if (!/document\s*\.\s*write\s*\(/.test(codigoSemComentarios)) {
-
-            erros.push(
-                "Use document.write() para mostrar uma mensagem."
-            );
-
-        }
-
-
-        // Verifica se o código compara com a senha 011
-        if (!/(==|===)\s*["']011["']|["']011["']\s*(==|===)/.test(codigoSemComentarios)) {
-
-            erros.push(
-                "Verifique a senha correta: 011."
-            );
-
-        }
-
-    }
-
-
-// ========================================================
-// FASE 3
-// ========================================================
-
-if (faseAtual === 3) {
-
-    // Verifica se criou a função calcularDano
-    if (!/function\s+calcularDano\s*\(/.test(codigo)) {
         erros.push(
-            "Crie uma função chamada calcularDano()."
+            "Escreva o código da ficha antes de verificar."
         );
-    }
 
-    // Verifica se utilizou if
-    if (!/\bif\s*\(/.test(codigo)) {
-        erros.push(
-            "Use if dentro da lógica da função."
-        );
-    }
+    } else {
 
-    // Verifica se utilizou else
-    if (!/\belse\b/.test(codigo)) {
-        erros.push(
-            "Use else para completar a lógica."
-        );
-    }
-
-    // Verifica se utilizou return
-    if (!/\breturn\b/.test(codigo)) {
-        erros.push(
-            "A função precisa utilizar return."
-        );
-    }
-
-    // Verifica se chamou a função
-    if (!/\bcalcularDano\s*\(/.test(codigo)) {
-        erros.push(
-            "Chame a função calcularDano()."
-        );
-    }
-}
-
-
-
-    // ========================================================
-    // FASE 4
-    // ========================================================
-
-    if (faseAtual === 4) {
-
-        // 1. Remover comentários do código
-        const codigoLimpo = codigo
-            .replace(/\/\*[\s\S]*?\*\//g, "")
-            .replace(/\/\/.*$/gm, "")
-            .trim();
-
-
-        // 2. Verificar se o código está vazio
-        if (codigoLimpo === "") {
+        if (!/\b(?:let|var)\s+nome\s*=/.test(codigoLimpo)) {
 
             erros.push(
-                "Escreva o código da batalha antes de verificar."
+                "Crie uma variável chamada nome usando let ou var."
             );
 
         }
 
-
-        // 3. Verificar se existe um loop while
-        if (!/\bwhile\s*\(/.test(codigoLimpo)) {
+        if (
+            !/\b(?:let|var)\s+nome\s*=\s*prompt\s*\(/.test(codigoLimpo)
+        ) {
 
             erros.push(
-                "Use while() para controlar a batalha."
+                "Use prompt() para perguntar o nome."
             );
 
         }
 
-
-        // 4. Verificar se existe um loop for
-        if (!/\bfor\s*\(/.test(codigoLimpo)) {
+        if (
+            !/\b(?:let|var)\s+idade\s*=\s*parseint\s*\(\s*prompt\s*\(/.test(codigoLimpo)
+        ) {
 
             erros.push(
-                "Use for() para repetir os ataques."
+                "Use parseInt(prompt()) para receber a idade."
             );
 
         }
 
-
-        // 5. Verificar se existe uma variável de vida
-        if (!/\b(?:let|const|var)\s+vida\b/.test(codigoLimpo)) {
+        if (
+            !/\b(?:let|var)\s+waffles\s*=\s*parsefloat\s*\(\s*prompt\s*\(/.test(codigoLimpo)
+        ) {
 
             erros.push(
-                "Crie uma variável para a vida do inimigo."
+                "Use parseFloat(prompt()) para receber a quantidade de waffles."
             );
 
         }
 
-
-        // 6. Verificar se existe uma variável de dano
-        if (!/\b(?:let|const|var)\s+dano\b/.test(codigoLimpo)) {
+        if (
+            !/\bdocument\s*\.\s*write\s*\(/.test(codigoLimpo)
+        ) {
 
             erros.push(
-                "Crie uma variável para o dano."
+                "Use document.write() para mostrar as informações."
             );
 
         }
 
-
-        // 7. Verificar se o código diminui a vida
-        if (!/(?:vida\s*[-]=|vida\s*=\s*vida\s*-)/.test(codigoLimpo)) {
-
-            erros.push(
-                "Diminua a vida do inimigo a cada ataque."
-            );
-
-        }
-
-
-        // 8. Verificar se existe uma saída
-        if (!/document\s*\.\s*write\s*\(/.test(codigoLimpo)
-            && !/console\s*\.\s*log\s*\(/.test(codigoLimpo)) {
-
-            erros.push(
-                "Mostre o resultado usando document.write() ou console.log()."
-            );
-
-        }
-
-
-        // 9. Verificar erros de sintaxe
         if (erros.length === 0) {
 
             try {
@@ -1242,37 +1329,255 @@ if (faseAtual === 3) {
             }
 
         }
+    }
+}
+
+
+    // ========================================================
+    // FASE 2
+    // ========================================================
+
+    if (faseAtual === 2) {
+
+        const codigoSemComentarios = codigo
+            .replace(/\/\*[\s\S]*?\*\//g, "")
+            .replace(/\/\/.*$/gm, "")
+            .trim();
+
+
+        if (!/\bprompt\s*\(/.test(codigoSemComentarios)) {
+
+            erros.push(
+                "Use prompt() para perguntar a senha."
+            );
+
+        }
+
+
+        if (!/\bif\s*\(/.test(codigoSemComentarios)) {
+
+            erros.push(
+                "Você precisa utilizar if para verificar a senha."
+            );
+
+        }
+
+
+        if (!/\belse\b/.test(codigoSemComentarios)) {
+
+            erros.push(
+                "Você precisa utilizar else para a senha incorreta."
+            );
+
+        }
+
+
+        if (
+            !/document\s*\.\s*write\s*\(/.test(codigoSemComentarios)
+        ) {
+
+            erros.push(
+                "Use document.write() para mostrar uma mensagem."
+            );
+
+        }
+
+
+        if (
+            !/(==|===)\s*["']011["']|["']011["']\s*(==|===)/.test(codigoSemComentarios)
+        ) {
+
+            erros.push(
+                "Verifique a senha correta: 011."
+            );
+
+        }
 
     }
 
 
     // ========================================================
-// FASE 5
-// ========================================================
+    // FASE 3
+    // ========================================================
 
-if (faseAtual === 5) {
+    if (faseAtual === 3) {
 
-    // Verifica se criou um vetor
-    if (!/=\s*\[/.test(codigo)) {
-        erros.push(
-            "Crie um vetor utilizando []."
-        );
+        if (
+            !/function\s+calculardano\s*\(/.test(codigo)
+        ) {
+
+            erros.push(
+                "Crie uma função chamada calcularDano()."
+            );
+
+        }
+
+
+        if (!/\bif\s*\(/.test(codigo)) {
+
+            erros.push(
+                "Use if dentro da lógica da função."
+            );
+
+        }
+
+
+        if (!/\belse\b/.test(codigo)) {
+
+            erros.push(
+                "Use else para completar a lógica."
+            );
+
+        }
+
+
+        if (!/\breturn\b/.test(codigo)) {
+
+            erros.push(
+                "A função precisa utilizar return."
+            );
+
+        }
+
+
+        if (!/\bcalculardano\s*\(/.test(codigo)) {
+
+            erros.push(
+                "Chame a função calcularDano()."
+            );
+
+        }
+
     }
 
-    // Verifica se utilizou push()
-    if (!/\.push\s*\(/.test(codigo)) {
+
+    // ========================================================
+    // FASE 4
+    // ========================================================
+
+   if (faseAtual === 4) {
+
+    const codigoLimpo = codigo
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*$/gm, "")
+        .trim();
+
+    if (codigoLimpo === "") {
+
         erros.push(
-            "Use push() para adicionar um item ao vetor."
+            "Escreva o código da batalha antes de verificar."
         );
+
     }
 
-    // Verifica se utilizou for
-    if (!/\bfor\s*\(/.test(codigo)) {
+    if (!/\bwhile\s*\(/.test(codigoLimpo)) {
+
         erros.push(
-            "Use for para percorrer o vetor."
+            "Use while() para controlar a batalha."
         );
+
+    }
+
+    if (!/\bfor\s*\(/.test(codigoLimpo)) {
+
+        erros.push(
+            "Use for() para repetir os ataques."
+        );
+
+    }
+
+    if (
+        !/\b(?:let|var)\s+vida\b/.test(codigoLimpo)
+    ) {
+
+        erros.push(
+            "Crie uma variável para a vida do inimigo usando let ou var."
+        );
+
+    }
+
+    if (
+        !/\b(?:let|var)\s+dano\b/.test(codigoLimpo)
+    ) {
+
+        erros.push(
+            "Crie uma variável para o dano usando let ou var."
+        );
+
+    }
+
+    if (
+        !/(?:vida\s*[-]=|vida\s*=\s*vida\s*-)/.test(codigoLimpo)
+    ) {
+
+        erros.push(
+            "Diminua a vida do inimigo a cada ataque."
+        );
+
+    }
+
+    if (
+        !/document\s*\.\s*write\s*\(/.test(codigoLimpo)
+        &&
+        !/console\s*\.\s*log\s*\(/.test(codigoLimpo)
+    ) {
+
+        erros.push(
+            "Mostre o resultado usando document.write() ou console.log()."
+        );
+
+    }
+
+    if (erros.length === 0) {
+
+        try {
+
+            new Function(codigoLimpo);
+
+        } catch (erro) {
+
+            erros.push(
+                "Seu código possui um erro de sintaxe."
+            );
+
+        }
+
     }
 }
+
+    // ========================================================
+    // FASE 5
+    // ========================================================
+
+    if (faseAtual === 5) {
+
+        if (!/=\s*\[/.test(codigo)) {
+
+            erros.push(
+                "Crie um vetor utilizando []."
+            );
+
+        }
+
+
+        if (!/\.push\s*\(/.test(codigo)) {
+
+            erros.push(
+                "Use push() para adicionar um item ao vetor."
+            );
+
+        }
+
+
+        if (!/\bfor\s*\(/.test(codigo)) {
+
+            erros.push(
+                "Use for para percorrer o vetor."
+            );
+
+        }
+
+    }
 
 
     // ========================================================
@@ -1281,86 +1586,317 @@ if (faseAtual === 5) {
 
     if (faseAtual === 6) {
 
-        if (
-            !codigo.includes(
-                "getelementbyid"
-            )
-        ) {
-
-            erros.push(
-                "Use document.getElementById()."
-            );
-
-        }
-
-        if (
-            !codigo.includes(
-                "addeventlistener"
-            )
-        ) {
-
-            erros.push(
-                "Use addEventListener()."
-            );
-
-        }
-
+    if (!codigo.includes("getelementbyid")) {
+        erros.push("Use document.getElementById().");
     }
+
+    if (!codigo.includes("function")) {
+        erros.push("Crie uma função para mudar a lâmpada.");
+    }
+
+    if (!codigo.includes("mudarluz")) {
+        erros.push("Crie uma função chamada mudarLuz().");
+    }
+
+    if (!codigo.includes("if")) {
+        erros.push("Use if para verificar o estado da lâmpada.");
+    }
+
+    if (!codigo.includes("else")) {
+        erros.push("Use else para alternar a lâmpada.");
+    }
+
+    if (!codigo.includes(".src")) {
+        erros.push("Use .src para trocar a imagem.");
+    }
+
+    if (!codigo.includes("lampada-acesa.png")) {
+        erros.push("Use a imagem da lâmpada acesa.");
+    }
+
+    if (!codigo.includes("lampada-apagada.png")) {
+        erros.push("Use a imagem da lâmpada apagada.");
+    }
+}
 
 
     // ========================================================
-    // BOSS
+    // FASE 7 - BATALHA FINAL
     // ========================================================
 
     if (faseAtual === 7) {
 
-        const requisitos = [
+        // ----------------------------------------------------
+        // Remove comentários
+        // ----------------------------------------------------
 
-            "let",
-
-            "prompt",
-
-            "parseint",
-
-            "if",
-
-            "else",
-
-            "function",
-
-            "return",
-
-            "while",
-
-            "for",
-
-            "[",
-
-            "]",
-
-            "getelementbyid",
-
-            "addeventlistener"
-
-        ];
+        const codigoLimpo =
+            codigo
+                .replace(/\/\*[\s\S]*?\*\//g, "")
+                .replace(/\/\/.*$/gm, "")
+                .trim();
 
 
-        requisitos.forEach(
-            function (requisito) {
+        // ----------------------------------------------------
+        // Verifica se o código está vazio
+        // ----------------------------------------------------
 
-                if (
-                    !codigo.includes(requisito)
-                ) {
+        if (codigoLimpo === "") {
+
+            erros.push(
+                "Escreva seu código da batalha antes de verificar."
+            );
+
+        } else {
+
+
+            // ------------------------------------------------
+            // HTML
+            // ------------------------------------------------
+
+            if (!/<input\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Crie um elemento <input> para receber a força do ataque."
+                );
+
+            }
+
+
+            if (!/<button\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Crie um elemento <button> para realizar o ataque."
+                );
+
+            }
+
+
+            if (!/<p\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Crie pelo menos um elemento <p> para mostrar informações da batalha."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // DOM
+            // ------------------------------------------------
+
+            if (
+                !/document\s*\.\s*getelementbyid\s*\(/i.test(codigoLimpo)
+            ) {
+
+                erros.push(
+                    "Use document.getElementById() para acessar os elementos HTML."
+                );
+
+            }
+
+
+            if (!/\.value\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Use .value para pegar o valor digitado no input."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // CONVERSÃO
+            // ------------------------------------------------
+
+            const temConversao =
+                /number\s*\(/i.test(codigoLimpo) ||
+                /parseint\s*\(/i.test(codigoLimpo) ||
+                /parsefloat\s*\(/i.test(codigoLimpo);
+
+
+            if (!temConversao) {
+
+                erros.push(
+                    "Converta o valor do input para número usando Number(), parseInt() ou parseFloat()."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // FUNÇÃO
+            // ------------------------------------------------
+
+            if (!/\bfunction\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Crie uma função para calcular o dano."
+                );
+
+            }
+
+
+            if (!/\breturn\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Sua função precisa utilizar return."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // CONDIÇÃO
+            // ------------------------------------------------
+
+            if (!/\bif\s*\(/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Use if para verificar a situação da batalha."
+                );
+
+            }
+
+
+            if (!/\belse\b/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Use else para definir o que acontece quando Vecna ainda está vivo."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // VETOR
+            // ------------------------------------------------
+
+            const temVetor =
+                /=\s*\[[\s\S]*?\]/.test(codigoLimpo);
+
+
+            if (!temVetor) {
+
+                erros.push(
+                    "Crie um vetor para armazenar os ataques."
+                );
+
+            }
+
+
+            if (!/\.push\s*\(/i.test(codigoLimpo)) {
+
+                erros.push(
+                    "Use push() para registrar os ataques no vetor."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // REPETIÇÃO
+            // ------------------------------------------------
+
+            const temFor =
+                /\bfor\s*\(/i.test(codigoLimpo);
+
+
+            const temWhile =
+                /\bwhile\s*\(/i.test(codigoLimpo);
+
+
+            if (!temFor && !temWhile) {
+
+                erros.push(
+                    "Use for ou while para percorrer o vetor."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // ALTERAÇÃO DA PÁGINA
+            // ------------------------------------------------
+
+            const temInnerText =
+                /\.innertext\b/i.test(codigoLimpo);
+
+
+            const temInnerHTML =
+                /\.innerhtml\b/i.test(codigoLimpo);
+
+
+            if (!temInnerText && !temInnerHTML) {
+
+                erros.push(
+                    "Use innerText ou innerHTML para mostrar o resultado na página."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // EVENTO
+            // ------------------------------------------------
+
+            if (
+                !/addeventlistener\s*\(/i.test(codigoLimpo)
+            ) {
+
+                erros.push(
+                    "Use addEventListener() para detectar o clique no botão."
+                );
+
+            }
+
+
+            // ------------------------------------------------
+            // JAVASCRIPT DENTRO DO HTML
+            // ------------------------------------------------
+
+            const scripts =
+                [
+                    ...codigoLimpo.matchAll(
+                        /<script[^>]*>([\s\S]*?)<\/script>/gi
+                    )
+                ]
+                .map(
+                    function (resultado) {
+
+                        return resultado[1];
+
+                    }
+                )
+                .join("\n");
+
+
+            // Só verifica sintaxe se encontrou
+            // JavaScript dentro de <script>
+
+            if (scripts.trim() !== "") {
+
+                try {
+
+                    new Function(scripts);
+
+                } catch (erro) {
 
                     erros.push(
-                        "Está faltando: " +
-                        requisito
+                        "O JavaScript possui um erro de sintaxe."
                     );
 
                 }
 
+            } else {
+
+                erros.push(
+                    "Coloque seu JavaScript dentro de uma tag <script>...</script>."
+                );
+
             }
-        );
+
+        }
 
     }
 
@@ -1403,7 +1939,7 @@ if (faseAtual === 5) {
             `
             <strong>✗ Ainda não!</strong>
             <br><br>
-            ${erros.join("<br>")}
+            ${erros.join("<br><br>")}
             `;
 
     }
@@ -1441,16 +1977,22 @@ function atualizarMapa() {
 
     let concluidas = 0;
 
+
     // Conta quantas fases foram concluídas
+
     for (let i = 1; i <= 7; i++) {
 
         if (progresso["fase" + i]) {
+
             concluidas++;
+
         }
 
     }
 
+
     // Atualiza o texto de progresso
+
     document
         .getElementById("progresso")
         .innerText =
@@ -1464,10 +2006,15 @@ function atualizarMapa() {
     for (let i = 1; i <= 7; i++) {
 
         const card =
-            document.getElementById("card" + i);
+            document.getElementById(
+                "card" + i
+            );
+
 
         const status =
-            document.getElementById("status" + i);
+            document.getElementById(
+                "status" + i
+            );
 
 
         // ====================================================
@@ -1481,16 +2028,25 @@ function atualizarMapa() {
                     ? "card boss fase-disponivel"
                     : "card fase-disponivel";
 
-            status.innerText = "✓ CONCLUÍDO";
 
-            status.style.color = "#00ff88";
-            status.style.borderColor = "#00ff88";
+            status.innerText =
+                "✓ CONCLUÍDO";
 
-            card.onclick = function () {
 
-                abrirFase(i);
+            status.style.color =
+                "#00ff88";
 
-            };
+
+            status.style.borderColor =
+                "#00ff88";
+
+
+            card.onclick =
+                function () {
+
+                    abrirFase(i);
+
+                };
 
         }
 
@@ -1506,16 +2062,25 @@ function atualizarMapa() {
                     ? "card boss fase-disponivel"
                     : "card fase-disponivel";
 
-            status.innerText = "DISPONÍVEL";
 
-            status.style.color = "#00ff88";
-            status.style.borderColor = "#00ff88";
+            status.innerText =
+                "DISPONÍVEL";
 
-            card.onclick = function () {
 
-                abrirFase(i);
+            status.style.color =
+                "#00ff88";
 
-            };
+
+            status.style.borderColor =
+                "#00ff88";
+
+
+            card.onclick =
+                function () {
+
+                    abrirFase(i);
+
+                };
 
         }
 
