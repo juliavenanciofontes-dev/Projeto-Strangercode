@@ -127,7 +127,7 @@ const fases = {
 
             "Pergunte a senha usando prompt().",
 
-            "Use if para verificar a senha.",
+            "Use if para verificar se a senha é igual a 011.",
 
             "Use else caso a senha esteja errada.",
 
@@ -491,312 +491,200 @@ const fases = {
 },
 
 
-    // ========================================================
-    // BOSS
+        // ========================================================
+    // FASE 7 - O PORTAL DO MUNDO INVERTIDO
     // ========================================================
 
     7: {
 
         numero: "⚠ BATALHA FINAL",
 
-        titulo: "Vecna e o Mundo Invertido",
+        titulo: "O Portal do Mundo Invertido",
 
         historia: `
-            Você chegou ao coração do Mundo Invertido.
+            O portal para o Mundo Invertido foi aberto
+            novamente, e Hawkins está em perigo!
 
-            Vecna está diante de você e o portal
-            está prestes a ser aberto.
+            Para fechá-lo, você precisará coletar
+            energia suficiente e usar seus conhecimentos
+            de JavaScript para concluir a missão.
 
-            Para derrotá-lo, você precisará construir
-            seu próprio sistema de batalha utilizando
-            os conhecimentos aprendidos durante
-            os capítulos anteriores.
+            Organize as energias coletadas, calcule
+            o total e descubra se já é possível
+            fechar o portal.
         `,
 
         tarefas: [
 
-            "Crie no HTML um campo input para o jogador informar a força do ataque.",
+            "Crie uma variável chamada energias e inicialize-a como um vetor vazio.",
 
-            "Crie um button para realizar o ataque.",
+            "Crie uma variável chamada total e atribua a ela o valor 0.",
 
-            "Crie um elemento <p> para mostrar as informações da batalha.",
+            "No HTML, crie um botão para coletar energia e outro para fechar o portal.",
 
-            "Use document.getElementById() para acessar os elementos HTML.",
+            "Crie três elementos HTML para exibir o total de energia, o resultado da ação e a lista de energias coletadas.",
 
-            "Use .value para pegar o valor digitado no input.",
+            "Utilize document.getElementById() para acessar os três elementos de exibição.",
 
-            "Converta o valor recebido para número.",
+            "Configure o botão de coleta para executar a função coletarEnergia() ao ser clicado.",
 
-            "Crie uma função que receba a força do ataque e use return para devolver o dano.",
+            "Configure o botão de fechar o portal para executar a função fecharPortal() ao ser clicado.",
 
-            "Use if e else para verificar o estado da batalha.",
+            "Crie a função coletarEnergia().",
 
-            "Crie um vetor para armazenar os danos dos ataques.",
+            "Dentro dela, gere um número aleatório inteiro entre 1 e 10.",
 
-            "Use push() para adicionar cada ataque ao vetor.",
+            "Adicione o valor gerado ao vetor energias usando push().",
 
-            "Use for ou while para percorrer o vetor.",
+            "Zere a variável total e utilize um laço for para percorrer o vetor e somar todas as energias.",
 
-            "Use innerText ou innerHTML para atualizar informações na página.",
+            "Atualize a página para exibir o total de energia acumulada e a lista de valores coletados.",
 
-            "Use addEventListener() para detectar o clique no botão.",
+            "Exiba uma mensagem informando quantos pontos de energia foram obtidos naquela coleta.",
 
-            "Faça a vida de Vecna diminuir a cada ataque.",
+            "Crie a função fecharPortal().",
 
-            "Quando a vida chegar a zero, mostre uma mensagem informando que Vecna foi derrotado."
+            "Dentro dela, utilize if para verificar se o total de energia acumulada é maior ou igual a 30.",
+
+            "Se a condição for verdadeira, exiba uma mensagem informando que o portal foi fechado e desative os dois botões.",
+
+            "Caso contrário, utilize else para informar que a energia ainda é insuficiente e que o jogador precisa coletar mais."
 
         ],
 
         dica: `
-            Comece pelo HTML!
+            Comece criando o vetor e as variáveis
+            que serão usadas no jogo.
 
-            Pense em três elementos principais:
+            Depois, prepare os elementos HTML
+            e conecte-os ao JavaScript.
 
-            1. Um input para o jogador digitar
-               a força do ataque.
+            Lembre-se:
 
-            2. Um button para realizar o ataque.
+            • document.getElementById() encontra
+              elementos da página.
 
-            3. Um elemento <p> para mostrar
-               o resultado da batalha.
+            • onclick chama uma função quando
+              o botão é clicado.
 
+            • Math.floor(Math.random() * 10) + 1
+              gera um número inteiro de 1 a 10.
 
-            Depois, no JavaScript:
+            • push() adiciona um valor ao vetor.
 
-            • Use document.getElementById()
-              para encontrar os elementos.
-
-            • Use .value para pegar o que
-              foi digitado.
-
-            • Converta esse valor para número.
-
-            • Crie uma função para calcular
-              o dano e use return.
-
-            • Diminua a vida de Vecna.
+            • Um for pode percorrer o vetor
+              e somar seus valores.
 
             • Use if e else para verificar
-              se Vecna ainda está vivo.
+              se o total chegou a 30.
 
-            • Crie um vetor para guardar
-              os danos dos ataques.
-
-            • Use push() para registrar
-              cada ataque.
-
-            • Use for ou while para percorrer
-              o vetor.
-
-            • Use innerText ou innerHTML
-              para atualizar a página.
-
-            • Use addEventListener()
-              para detectar o clique.
-
-            IMPORTANTE:
-
-            Nesta fase você NÃO precisa usar prompt()
-            para realizar o ataque.
+            Atualize a tela sempre que o jogador
+            coletar energia ou tentar fechar o portal.
         `,
 
         gabarito: `
-            <!DOCTYPE html>
-            <html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-            <head>
+<head>
+    <meta charset="UTF-8">
+    <title>O Portal do Mundo Invertido</title>
+</head>
 
-                <meta charset="UTF-8">
+<body>
 
-                <title>
-                    Confronto Final
-                </title>
+    <h1>O Portal do Mundo Invertido</h1>
 
-            </head>
+    <p>
+        Energia acumulada:
+        <span id="energia">0</span>
+    </p>
 
-            <body>
+    <button
+        id="btnColetar"
+        onclick="coletarEnergia()"
+    >
+        Coletar energia
+    </button>
 
-                <h1>⚔️ Confronto Final</h1>
+    <button
+        id="btnFechar"
+        onclick="fecharPortal()"
+    >
+        Fechar portal
+    </button>
 
-                <p>
-                    Vida de Vecna:
-                    <span id="vidaVecna">100</span>
-                </p>
+    <p id="resultado"></p>
 
-                <label>
-                    Força do ataque:
-                </label>
+    <p id="historico"></p>
 
-                <input
-                    type="number"
-                    id="forcaAtaque"
-                >
+    <script>
 
-                <button id="btnAtacar">
-                    Atacar Vecna
-                </button>
+        let energias = [];
+        let total = 0;
 
-                <p id="resultado"></p>
+        const energiaNaTela =
+            document.getElementById("energia");
 
-                <h2>
-                    Histórico de ataques
-                </h2>
+        const resultado =
+            document.getElementById("resultado");
 
-                <p id="historico"></p>
+        const historico =
+            document.getElementById("historico");
 
+        function coletarEnergia() {
 
-                <script>
+            let energia =
+                Math.floor(Math.random() * 10) + 1;
 
-                    let vidaVecna = 100;
+            energias.push(energia);
 
-                    let ataques = [];
+            total = 0;
 
+            for (let i = 0; i < energias.length; i++) {
+                total += energias[i];
+            }
 
-                    const inputAtaque =
-                        document.getElementById(
-                            "forcaAtaque"
-                        );
+            energiaNaTela.innerText = total;
 
+            historico.innerText =
+                "Energias coletadas: " +
+                energias.join(", ");
 
-                    const botaoAtacar =
-                        document.getElementById(
-                            "btnAtacar"
-                        );
+            resultado.innerText =
+                "Você coletou " +
+                energia +
+                " pontos de energia!";
+        }
 
+        function fecharPortal() {
 
-                    const resultado =
-                        document.getElementById(
-                            "resultado"
-                        );
+            if (total >= 30) {
 
+                resultado.innerText =
+                    "Portal fechado! Você salvou Hawkins!";
 
-                    const vidaNaTela =
-                        document.getElementById(
-                            "vidaVecna"
-                        );
+                document.getElementById(
+                    "btnColetar"
+                ).disabled = true;
 
+                document.getElementById(
+                    "btnFechar"
+                ).disabled = true;
 
-                    const historico =
-                        document.getElementById(
-                            "historico"
-                        );
+            } else {
 
+                resultado.innerText =
+                    "Energia insuficiente! Colete mais energia.";
 
-                    function calcularDano(forca) {
+            }
 
-                        return forca * 2;
+        }
 
-                    }
+    </script>
 
-
-                    botaoAtacar.addEventListener(
-                        "click",
-                        function () {
-
-                            if (vidaVecna <= 0) {
-
-                                resultado.innerText =
-                                    "Vecna já foi derrotado!";
-
-                                return;
-
-                            }
-
-
-                            let forca =
-                                Number(
-                                    inputAtaque.value
-                                );
-
-
-                            if (
-                                forca <= 0 ||
-                                inputAtaque.value === ""
-                            ) {
-
-                                resultado.innerText =
-                                    "Digite uma força de ataque válida!";
-
-                                return;
-
-                            }
-
-
-                            let dano =
-                                calcularDano(forca);
-
-
-                            vidaVecna =
-                                vidaVecna - dano;
-
-
-                            if (vidaVecna < 0) {
-
-                                vidaVecna = 0;
-
-                            }
-
-
-                            ataques.push(dano);
-
-
-                            vidaNaTela.innerText =
-                                vidaVecna;
-
-
-                            if (vidaVecna === 0) {
-
-                                resultado.innerText =
-                                    "Você derrotou Vecna e fechou o portal do Mundo Invertido!";
-
-                                botaoAtacar.disabled =
-                                    true;
-
-                            } else {
-
-                                resultado.innerText =
-                                    "Você causou " +
-                                    dano +
-                                    " de dano! Vecna ainda possui " +
-                                    vidaVecna +
-                                    " de vida.";
-
-                            }
-
-
-                            let textoHistorico = "";
-
-
-                            for (
-                                let i = 0;
-                                i < ataques.length;
-                                i++
-                            ) {
-
-                                textoHistorico +=
-                                    "Ataque " +
-                                    (i + 1) +
-                                    ": " +
-                                    ataques[i] +
-                                    " de dano<br>";
-
-                            }
-
-
-                            historico.innerHTML =
-                                textoHistorico;
-
-
-                            inputAtaque.value = "";
-
-                        }
-                    );
-
-                </script>
-
-            </body>
-
-            </html>
+</body>
+</html>
         `,
 
         codigo: `
@@ -805,28 +693,24 @@ const fases = {
 
 <head>
     <meta charset="UTF-8">
-    <title>Batalha Final</title>
+    <title>O Portal do Mundo Invertido</title>
 </head>
 
 <body>
 
-    <!-- Crie aqui os elementos HTML da sua batalha -->
-
+    <!-- Crie aqui os elementos HTML da missão -->
 
     <script>
 
-        // Escreva aqui o JavaScript da sua batalha
-
+        // Escreva aqui o JavaScript da missão
 
     </script>
 
 </body>
-
 </html>
-`
+        `
 
     }
-
 };
 
 
@@ -1620,285 +1504,327 @@ function verificarCodigo() {
 }
 
 
-    // ========================================================
-    // FASE 7 - BATALHA FINAL
-    // ========================================================
+    
+// ========================================================
+// FASE 7 - O PORTAL DO MUNDO INVERTIDO
+// ========================================================
 
-    if (faseAtual === 7) {
+if (faseAtual === 7) {
 
-        // ----------------------------------------------------
-        // Remove comentários
-        // ----------------------------------------------------
+    const codigoLimpo = codigo
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*$/gm, "")
+        .trim();
 
-        const codigoLimpo =
-            codigo
-                .replace(/\/\*[\s\S]*?\*\//g, "")
-                .replace(/\/\/.*$/gm, "")
-                .trim();
+    if (codigoLimpo === "") {
 
+        erros.push(
+            "Escreva seu código antes de verificar a missão."
+        );
 
-        // ----------------------------------------------------
-        // Verifica se o código está vazio
-        // ----------------------------------------------------
+    } else {
 
-        if (codigoLimpo === "") {
+        // ------------------------------------------------
+        // EXTRAIR O JAVASCRIPT DO HTML
+        // ------------------------------------------------
+
+        const scripts = [
+            ...codigoLimpo.matchAll(
+                /<script\b[^>]*>([\s\S]*?)<\/script>/gi
+            )
+        ]
+            .map(function (resultado) {
+                return resultado[1];
+            })
+            .join("\n");
+
+        if (scripts.trim() === "") {
 
             erros.push(
-                "Escreva seu código da batalha antes de verificar."
+                "Coloque seu JavaScript dentro de uma tag <script>."
             );
 
         } else {
 
-
             // ------------------------------------------------
-            // HTML
+            // VERIFICAR A SINTAXE
             // ------------------------------------------------
 
-            if (!/<input\b/i.test(codigoLimpo)) {
+            let sintaxeValida = true;
+
+            try {
+                new Function(scripts);
+            } catch (erro) {
+                sintaxeValida = false;
 
                 erros.push(
-                    "Crie um elemento <input> para receber a força do ataque."
+                    "O JavaScript possui um erro de sintaxe."
                 );
-
             }
 
+            // Só verifica a lógica se a sintaxe estiver correta
+            if (sintaxeValida) {
 
-            if (!/<button\b/i.test(codigoLimpo)) {
+                const js = scripts
+                    .replace(/\/\*[\s\S]*?\*\//g, "")
+                    .replace(/\/\/.*$/gm, "");
 
-                erros.push(
-                    "Crie um elemento <button> para realizar o ataque."
-                );
+                // ------------------------------------------------
+                // HTML
+                // ------------------------------------------------
 
-            }
+                const temBotaoColetar =
+                    /<button\b[^>]*\bid\s*=\s*["']btnColetar["']/i.test(codigoLimpo);
 
+                const temBotaoFechar =
+                    /<button\b[^>]*\bid\s*=\s*["']btnFechar["']/i.test(codigoLimpo);
 
-            if (!/<p\b/i.test(codigoLimpo)) {
+                const temEnergia =
+                    /<(?:span|p|div)\b[^>]*\bid\s*=\s*["']energia["']/i.test(codigoLimpo);
 
-                erros.push(
-                    "Crie pelo menos um elemento <p> para mostrar informações da batalha."
-                );
+                const temResultado =
+                    /<(?:p|div|span)\b[^>]*\bid\s*=\s*["']resultado["']/i.test(codigoLimpo);
 
-            }
+                const temHistorico =
+                    /<(?:p|div|span)\b[^>]*\bid\s*=\s*["']historico["']/i.test(codigoLimpo);
 
-
-            // ------------------------------------------------
-            // DOM
-            // ------------------------------------------------
-
-            if (
-                !/document\s*\.\s*getelementbyid\s*\(/i.test(codigoLimpo)
-            ) {
-
-                erros.push(
-                    "Use document.getElementById() para acessar os elementos HTML."
-                );
-
-            }
-
-
-            if (!/\.value\b/i.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use .value para pegar o valor digitado no input."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // CONVERSÃO
-            // ------------------------------------------------
-
-            const temConversao =
-                /number\s*\(/i.test(codigoLimpo) ||
-                /parseint\s*\(/i.test(codigoLimpo) ||
-                /parsefloat\s*\(/i.test(codigoLimpo);
-
-
-            if (!temConversao) {
-
-                erros.push(
-                    "Converta o valor do input para número usando Number(), parseInt() ou parseFloat()."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // FUNÇÃO
-            // ------------------------------------------------
-
-            if (!/\bfunction\b/i.test(codigoLimpo)) {
-
-                erros.push(
-                    "Crie uma função para calcular o dano."
-                );
-
-            }
-
-
-            if (!/\breturn\b/i.test(codigoLimpo)) {
-
-                erros.push(
-                    "Sua função precisa utilizar return."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // CONDIÇÃO
-            // ------------------------------------------------
-
-            if (!/\bif\s*\(/i.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use if para verificar a situação da batalha."
-                );
-
-            }
-
-
-            if (!/\belse\b/i.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use else para definir o que acontece quando Vecna ainda está vivo."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // VETOR
-            // ------------------------------------------------
-
-            const temVetor =
-                /=\s*\[[\s\S]*?\]/.test(codigoLimpo);
-
-
-            if (!temVetor) {
-
-                erros.push(
-                    "Crie um vetor para armazenar os ataques."
-                );
-
-            }
-
-
-            if (!/\.push\s*\(/i.test(codigoLimpo)) {
-
-                erros.push(
-                    "Use push() para registrar os ataques no vetor."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // REPETIÇÃO
-            // ------------------------------------------------
-
-            const temFor =
-                /\bfor\s*\(/i.test(codigoLimpo);
-
-
-            const temWhile =
-                /\bwhile\s*\(/i.test(codigoLimpo);
-
-
-            if (!temFor && !temWhile) {
-
-                erros.push(
-                    "Use for ou while para percorrer o vetor."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // ALTERAÇÃO DA PÁGINA
-            // ------------------------------------------------
-
-            const temInnerText =
-                /\.innertext\b/i.test(codigoLimpo);
-
-
-            const temInnerHTML =
-                /\.innerhtml\b/i.test(codigoLimpo);
-
-
-            if (!temInnerText && !temInnerHTML) {
-
-                erros.push(
-                    "Use innerText ou innerHTML para mostrar o resultado na página."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // EVENTO
-            // ------------------------------------------------
-
-            if (
-                !/addeventlistener\s*\(/i.test(codigoLimpo)
-            ) {
-
-                erros.push(
-                    "Use addEventListener() para detectar o clique no botão."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // JAVASCRIPT DENTRO DO HTML
-            // ------------------------------------------------
-
-            const scripts =
-                [
-                    ...codigoLimpo.matchAll(
-                        /<script[^>]*>([\s\S]*?)<\/script>/gi
-                    )
-                ]
-                .map(
-                    function (resultado) {
-
-                        return resultado[1];
-
-                    }
-                )
-                .join("\n");
-
-
-            // Só verifica sintaxe se encontrou
-            // JavaScript dentro de <script>
-
-            if (scripts.trim() !== "") {
-
-                try {
-
-                    new Function(scripts);
-
-                } catch (erro) {
-
+                if (!temBotaoColetar) {
                     erros.push(
-                        "O JavaScript possui um erro de sintaxe."
+                        "Crie um botão com o id btnColetar."
                     );
-
                 }
 
-            } else {
+                if (!temBotaoFechar) {
+                    erros.push(
+                        "Crie um botão com o id btnFechar."
+                    );
+                }
 
-                erros.push(
-                    "Coloque seu JavaScript dentro de uma tag <script>...</script>."
-                );
+                if (!temEnergia) {
+                    erros.push(
+                        "Crie um elemento com o id energia para mostrar o total."
+                    );
+                }
 
+                if (!temResultado) {
+                    erros.push(
+                        "Crie um elemento com o id resultado para mostrar as mensagens."
+                    );
+                }
+
+                if (!temHistorico) {
+                    erros.push(
+                        "Crie um elemento com o id historico para mostrar as energias coletadas."
+                    );
+                }
+
+                // ------------------------------------------------
+                // VARIÁVEIS
+                // ------------------------------------------------
+
+                const temVetor =
+                    /\b(?:let|var|const)\s+energias\s*=\s*\[\s*\]/i.test(js);
+
+                const temTotal =
+                    /\b(?:let|var|const)\s+total\s*=\s*0\b/i.test(js);
+
+                if (!temVetor) {
+                    erros.push(
+                        "Crie a variável energias e inicialize-a como um vetor vazio."
+                    );
+                }
+
+                if (!temTotal) {
+                    erros.push(
+                        "Crie a variável total e inicialize-a com 0."
+                    );
+                }
+
+                // ------------------------------------------------
+                // FUNÇÕES
+                // ------------------------------------------------
+
+                const funcaoColetar =
+                    js.match(
+                        /function\s+coletarEnergia\s*\([^)]*\)\s*\{([\s\S]*?)\}/i
+                    );
+
+                const funcaoFechar =
+                    js.match(
+                        /function\s+fecharPortal\s*\([^)]*\)\s*\{([\s\S]*?)\}/i
+                    );
+
+                if (!funcaoColetar) {
+                    erros.push(
+                        "Crie a função coletarEnergia()."
+                    );
+                }
+
+                if (!funcaoFechar) {
+                    erros.push(
+                        "Crie a função fecharPortal()."
+                    );
+                }
+
+                // ------------------------------------------------
+                // FUNÇÃO DE COLETA
+                // ------------------------------------------------
+
+                if (funcaoColetar) {
+
+                    const coleta = funcaoColetar[1];
+
+                    if (!/Math\s*\.\s*random\s*\(/i.test(coleta)) {
+                        erros.push(
+                            "Na função coletarEnergia(), gere um número aleatório."
+                        );
+                    }
+
+                    if (!/energias\s*\.\s*push\s*\(/i.test(coleta)) {
+                        erros.push(
+                            "Na função coletarEnergia(), adicione a energia ao vetor usando push()."
+                        );
+                    }
+
+                    if (!/\bfor\s*\(/i.test(coleta)) {
+                        erros.push(
+                            "Na função coletarEnergia(), utilize um laço for para percorrer o vetor."
+                        );
+                    }
+
+                    if (!/total\s*\+=/i.test(coleta)) {
+                        erros.push(
+                            "Na função coletarEnergia(), some as energias à variável total."
+                        );
+                    }
+
+                    if (!/total\s*=\s*0\b/i.test(coleta)) {
+                        erros.push(
+                            "Zere a variável total antes de calcular novamente a soma."
+                        );
+                    }
+
+                    if (!/energia/i.test(coleta)) {
+                        erros.push(
+                            "Utilize uma variável para armazenar o valor da energia coletada."
+                        );
+                    }
+
+                    if (!/\.innerText\b|\.innerHTML\b/i.test(coleta)) {
+                        erros.push(
+                            "Atualize as informações da página após coletar energia."
+                        );
+                    }
+
+                    if (!/historico/i.test(coleta)) {
+                        erros.push(
+                            "Mostre a lista de energias coletadas no histórico."
+                        );
+                    }
+
+                    if (!/resultado/i.test(coleta)) {
+                        erros.push(
+                            "Exiba uma mensagem informando a energia obtida."
+                        );
+                    }
+
+                    if (!/energia/i.test(coleta) ||
+                        !/total/i.test(coleta)) {
+                        erros.push(
+                            "Utilize as variáveis de energia e total na função de coleta."
+                        );
+                    }
+                }
+
+                // ------------------------------------------------
+                // FUNÇÃO DE FECHAR O PORTAL
+                // ------------------------------------------------
+
+                if (funcaoFechar) {
+
+                    const fechar = funcaoFechar[1];
+
+                    if (!/\bif\s*\(/i.test(fechar)) {
+                        erros.push(
+                            "Na função fecharPortal(), utilize if para verificar a energia."
+                        );
+                    }
+
+                    if (!/\belse\b/i.test(fechar)) {
+                        erros.push(
+                            "Na função fecharPortal(), utilize else para tratar a energia insuficiente."
+                        );
+                    }
+
+                    if (!/total\s*>=\s*30/i.test(fechar)) {
+                        erros.push(
+                            "Verifique se o total é maior ou igual a 30."
+                        );
+                    }
+
+                    if (!/resultado/i.test(fechar) ||
+                        !/\.innerText\b|\.innerHTML\b/i.test(fechar)) {
+                        erros.push(
+                            "Exiba o resultado da tentativa de fechar o portal."
+                        );
+                    }
+
+                    if (!/disabled\s*=\s*true/i.test(fechar)) {
+                        erros.push(
+                            "Desative os botões quando o portal for fechado."
+                        );
+                    }
+                }
+
+                // ------------------------------------------------
+                // CONEXÃO DOS BOTÕES
+                // ------------------------------------------------
+
+                const botaoColetarConectado =
+                    /id\s*=\s*["']btnColetar["'][^>]*onclick\s*=\s*["']coletarEnergia\s*\(\s*\)["']/i.test(codigoLimpo) ||
+                    /onclick\s*=\s*["']coletarEnergia\s*\(\s*\)["'][^>]*id\s*=\s*["']btnColetar["']/i.test(codigoLimpo);
+
+                const botaoFecharConectado =
+                    /id\s*=\s*["']btnFechar["'][^>]*onclick\s*=\s*["']fecharPortal\s*\(\s*\)["']/i.test(codigoLimpo) ||
+                    /onclick\s*=\s*["']fecharPortal\s*\(\s*\)["'][^>]*id\s*=\s*["']btnFechar["']/i.test(codigoLimpo);
+
+                if (!botaoColetarConectado) {
+                    erros.push(
+                        "Conecte o botão btnColetar à função coletarEnergia() usando onclick."
+                    );
+                }
+
+                if (!botaoFecharConectado) {
+                    erros.push(
+                        "Conecte o botão btnFechar à função fecharPortal() usando onclick."
+                    );
+                }
+
+                // ------------------------------------------------
+                // ACESSO AOS ELEMENTOS HTML
+                // ------------------------------------------------
+
+                if (!/document\s*\.\s*getElementById\s*\(\s*["']energia["']\s*\)/i.test(js)) {
+                    erros.push(
+                        "Acesse o elemento energia usando document.getElementById()."
+                    );
+                }
+
+                if (!/document\s*\.\s*getElementById\s*\(\s*["']resultado["']\s*\)/i.test(js)) {
+                    erros.push(
+                        "Acesse o elemento resultado usando document.getElementById()."
+                    );
+                }
+
+                if (!/document\s*\.\s*getElementById\s*\(\s*["']historico["']\s*\)/i.test(js)) {
+                    erros.push(
+                        "Acesse o elemento historico usando document.getElementById()."
+                    );
+                }
             }
-
         }
-
     }
+}
 
 
     // ========================================================

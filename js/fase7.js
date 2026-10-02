@@ -1,422 +1,144 @@
-
+// Mostra ou esconde a dica
 function mostrarDica() {
+    const dica = document.getElementById("dica");
 
-    document
-        .getElementById("dica")
-        .classList.toggle("escondida");
-
-}
-
-
-function mostrarGabarito() {
-
-    document
-        .getElementById("gabarito")
-        .classList.toggle("escondida");
-
-}
-
-
-function recomecarCodigo() {
-
-    document
-        .getElementById("codigo")
-        .value = codigoInicial;
-
-
-    document
-        .getElementById("saida")
-        .innerHTML = "";
-
-
-    document
-        .getElementById("mensagem")
-        .className =
-        "mensagem escondida";
-
-}
-
-
-/* =========================================
-   RODAR CÓDIGO
-   ========================================= */
-
-function rodarCodigo() {
-
-    const codigo =
-        document
-        .getElementById("codigo")
-        .value;
-
-
-    const saida =
-        document
-        .getElementById("saida");
-
-
-    if (codigo.trim() === "") {
-
-        saida.innerHTML =
-            "Digite seu código antes de rodar!";
-
-        return;
-
+    if (dica.style.display === "none") {
+        dica.style.display = "block";
+    } else {
+        dica.style.display = "none";
     }
-
-
-    /*
-       Criamos um iframe para que o código
-       HTML + JavaScript do aluno seja
-       executado separadamente da página
-       principal do Stranger Code.
-    */
-
-    const iframe =
-        document.createElement("iframe");
-
-
-    iframe.style.width = "100%";
-    iframe.style.minHeight = "350px";
-    iframe.style.border = "none";
-    iframe.style.background = "white";
-    iframe.style.borderRadius = "8px";
-
-
-    /*
-       O sandbox permite executar JavaScript
-       dentro do código do aluno sem permitir
-       que ele altere a página principal.
-    */
-
-    iframe.setAttribute(
-        "sandbox",
-        "allow-scripts"
-    );
-
-
-    iframe.srcdoc = codigo;
-
-
-    saida.innerHTML = "";
-
-
-    saida.appendChild(iframe);
-
 }
 
+// Mostra ou esconde o gabarito
+function mostrarGabarito() {
+    const gabarito = document.getElementById("gabarito");
 
-/* =========================================
-   VERIFICAR CÓDIGO
-   ========================================= */
+    if (gabarito.style.display === "none") {
+        gabarito.style.display = "block";
+    } else {
+        gabarito.style.display = "none";
+    }
+}
 
+// Limpa o editor e o resultado
+function recomecarCodigo() {
+    document.getElementById("codigo").value = "";
+    document.getElementById("resultado").innerHTML = "";
+
+    const verificacao = document.getElementById("verificacao");
+
+    if (verificacao) {
+        verificacao.innerText = "";
+    }
+}
+
+// Executa o código escrito pelo aluno
+function rodarCodigo() {
+    const codigo = document.getElementById("codigo").value;
+    const resultado = document.getElementById("resultado");
+
+    resultado.innerHTML = "";
+
+    try {
+        const iframe = document.createElement("iframe");
+
+        iframe.style.width = "100%";
+        iframe.style.height = "300px";
+        iframe.style.border = "1px solid #ccc";
+        iframe.style.backgroundColor = "white";
+
+        // Executa o código em um iframe isolado
+        iframe.setAttribute("sandbox", "allow-scripts");
+
+        resultado.appendChild(iframe);
+
+        iframe.srcdoc = codigo;
+
+    } catch (erro) {
+        resultado.innerText =
+            "Erro ao executar o código: " + erro.message;
+    }
+}
+
+// Verifica se o aluno cumpriu os requisitos da fase
 function verificarCodigo() {
-
-    const codigo =
-        document
-        .getElementById("codigo")
-        .value
-        .toLowerCase();
-
+    const codigo = document.getElementById("codigo").value;
+    const verificacao = document.getElementById("verificacao");
 
     let erros = [];
 
+    // Remove comentários e espaços desnecessários
+    const codigoLimpo = codigo
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*$/gm, "");
 
-    /*
-       Verifica se o aluno criou elementos
-       HTML necessários.
-    */
-
-    const temInput =
-        codigo.includes("<input") ||
-        codigo.includes("input");
-
-
-    const temButton =
-        codigo.includes("<button") ||
-        codigo.includes("button");
-
-
-    const temParagrafo =
-        codigo.includes("<p") ||
-        codigo.includes("<p>") ||
-        codigo.includes("p>");
-
-
-    if (!temInput) {
-
-        erros.push(
-            "Está faltando criar um input."
-        );
-
+    // Verifica se o código possui um vetor
+    if (!/\b(let|const|var)\s+energias\s*=\s*\[\s*\]/.test(codigoLimpo)) {
+        erros.push("Crie um vetor chamado energias para armazenar as energias.");
     }
 
-
-    if (!temButton) {
-
-        erros.push(
-            "Está faltando criar um button."
-        );
-
+    // Verifica se o código adiciona energia ao vetor
+    if (!/\benergias\s*\.\s*push\s*\(/.test(codigoLimpo)) {
+        erros.push("Utilize energias.push() para adicionar as energias ao vetor.");
     }
 
-
-    if (!temParagrafo) {
-
-        erros.push(
-            "Está faltando criar um elemento <p>."
-        );
-
+    // Verifica se existe uma variável para armazenar o total
+    if (!/\b(let|const|var)\s+total\b/.test(codigoLimpo)) {
+        erros.push("Crie uma variável chamada total para armazenar a soma das energias.");
     }
 
-
-    /*
-       Verifica acesso aos elementos HTML.
-    */
-
-    if (
-        !codigo.includes(
-            "getelementbyid"
-        )
-    ) {
-
-        erros.push(
-            "Use document.getElementById() para acessar elementos HTML."
-        );
-
+    // Verifica se existe um laço for
+    if (!/\bfor\s*\(/.test(codigoLimpo)) {
+        erros.push("Utilize um laço for para percorrer o vetor de energias.");
     }
 
-
-    /*
-       Verifica se o aluno utilizou .value.
-    */
-
-    if (
-        !codigo.includes(".value")
-    ) {
-
-        erros.push(
-            "Use .value para pegar o valor digitado no input."
-        );
-
+    // Verifica se existe uma condição para fechar o portal
+    if (!/\bif\s*\(/.test(codigoLimpo)) {
+        erros.push("Utilize if para verificar se há energia suficiente.");
     }
 
-
-    /*
-       Verifica se existe conversão para número.
-    */
-
-    const temConversao =
-        codigo.includes("number(") ||
-        codigo.includes("parseint(") ||
-        codigo.includes("parsefloat(");
-
-
-    if (!temConversao) {
-
-        erros.push(
-            "Converta o valor do input para número usando Number(), parseInt() ou parseFloat()."
-        );
-
+    // Verifica se existe else
+    if (!/\belse\b/.test(codigoLimpo)) {
+        erros.push("Utilize else para tratar a falta de energia.");
     }
 
-
-    /*
-       Verifica função.
-    */
-
-    if (
-        !codigo.includes("function")
-    ) {
-
-        erros.push(
-            "Crie uma função para calcular o dano."
-        );
-
+    // Verifica o acesso aos elementos HTML
+    if (!/document\s*\.\s*getElementById\s*\(/.test(codigoLimpo)) {
+        erros.push("Utilize getElementById() para acessar os elementos da página.");
     }
 
-
-    /*
-       Verifica return.
-    */
-
-    if (
-        !codigo.includes("return")
-    ) {
-
-        erros.push(
-            "Sua função precisa utilizar return."
-        );
-
+    // Verifica se o código atualiza a página
+    if (!/\.\s*(innerText|innerHTML)\s*=/.test(codigoLimpo)) {
+        erros.push("Utilize innerText ou innerHTML para mostrar informações na página.");
     }
 
-
-    /*
-       Verifica if e else.
-    */
-
-    if (
-        !codigo.includes("if")
-    ) {
-
-        erros.push(
-            "Use if para verificar a situação da batalha."
-        );
-
+    // Verifica se existem funções
+    if (!/\bfunction\s+coletarEnergia\s*\(/.test(codigoLimpo)) {
+        erros.push("Crie a função coletarEnergia() para coletar as energias.");
     }
 
-
-    if (
-        !codigo.includes("else")
-    ) {
-
-        erros.push(
-            "Use else para definir o que acontece quando Vecna ainda está vivo."
-        );
-
+    if (!/\bfunction\s+fecharPortal\s*\(/.test(codigoLimpo)) {
+        erros.push("Crie a função fecharPortal() para verificar se o portal pode ser fechado.");
     }
 
-
-    /*
-       Verifica vetor.
-
-       Procuramos por [] e também por
-       métodos comuns de vetor.
-    */
-
-    const temVetor =
-        codigo.includes("[]") ||
-        codigo.includes("array");
-
-
-    if (!temVetor) {
-
-        erros.push(
-            "Crie um vetor para armazenar os ataques."
-        );
-
+    // Verifica se existe uma comparação com 30
+    if (!/\btotal\s*>=\s*30\b/.test(codigoLimpo)) {
+        erros.push("Verifique se o total de energia é maior ou igual a 30.");
     }
 
-
-    /*
-       Verifica se algo é adicionado ao vetor.
-    */
-
-    if (
-        !codigo.includes("push")
-    ) {
-
-        erros.push(
-            "Use push() para registrar os ataques no vetor."
-        );
-
-    }
-
-
-    /*
-       Verifica estrutura de repetição.
-
-       O exercício permite for OU while.
-    */
-
-    const temFor =
-        codigo.includes("for");
-
-
-    const temWhile =
-        codigo.includes("while");
-
-
-    if (
-        !temFor &&
-        !temWhile
-    ) {
-
-        erros.push(
-            "Use uma estrutura de repetição (for ou while) para percorrer o vetor."
-        );
-
-    }
-
-
-    /*
-       Verifica atualização do HTML.
-    */
-
-    const temInnerText =
-        codigo.includes("innertext");
-
-
-    const temInnerHTML =
-        codigo.includes("innerhtml");
-
-
-    if (
-        !temInnerText &&
-        !temInnerHTML
-    ) {
-
-        erros.push(
-            "Use innerText ou innerHTML para mostrar o resultado na página."
-        );
-
-    }
-
-
-    /*
-       Verifica evento de clique.
-    */
-
-    if (
-        !codigo.includes("addeventlistener")
-    ) {
-
-        erros.push(
-            "Use addEventListener() para detectar o clique no botão."
-        );
-
-    }
-
-
-    /*
-       Mostra resultado.
-    */
-
-    const mensagem =
-        document
-        .getElementById("mensagem");
-
-
+    // Exibe o resultado da verificação
     if (erros.length === 0) {
+        verificacao.innerText =
+            "Parabéns! Você cumpriu todos os requisitos da fase 7!";
 
-        mensagem.className =
-            "mensagem sucesso";
+        verificacao.style.color = "green";
 
+        // Desbloqueia a próxima fase
+        localStorage.setItem("fase7", "true");
+    } else {
+        verificacao.innerText =
+            "Ainda faltam alguns requisitos:\n\n" + erros.join("\n");
 
-        mensagem.innerHTML =
-            "<strong>⚔ VECNA FOI DERROTADO!</strong>" +
-            "<br><br>" +
-            "Você utilizou os principais conhecimentos " +
-            "aprendidos durante o Stranger Code!" +
-            "<br><br>" +
-            "🎉 Você completou a batalha final!";
-
-
-        concluirFase();
-
+        verificacao.style.color = "red";
     }
-
-    else {
-
-        mensagem.className =
-            "mensagem erro";
-
-
-        mensagem.innerHTML =
-            "<strong>⚠ A batalha ainda não terminou!</strong>" +
-            "<br><br>" +
-            erros.join("<br><br>");
-
-    }
-
 }
-

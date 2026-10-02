@@ -1,336 +1,134 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Stranger Code - Capítulo 6
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="../style.css"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 6 - As Luzes da Joyce</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-
 
 <body>
 
-    <div class="background"></div>
+    <h1>Fase 6 - As Luzes da Joyce</h1>
 
+    <p>
+        Joyce acredita que consegue se comunicar com Will por meio das
+        luzes de Natal. Sua missão é programar uma lâmpada que possa
+        acender e apagar sempre que o botão for pressionado.
+    </p>
 
-    <section class="tela">
+    <h2>🎯 Sua missão</h2>
 
-        <header>
+    <p>
+        Utilize JavaScript para fazer a lâmpada alternar entre os estados
+        acesa e apagada. Para isso, siga as instruções abaixo.
+    </p>
 
-            <h1>STRANGER CODE</h1>
+    <h3>📋 Passo a passo</h3>
 
-            <p class="subtitle">
-                CAPÍTULO SEIS
-            </p>
+    <ol id="tarefas">
+        <li>
+            <strong>Localize a lâmpada:</strong>
+            utilize <code>document.getElementById("lampada")</code>
+            para acessar a imagem da lâmpada no HTML.
+        </li>
 
-        </header>
+        <li>
+            <strong>Crie uma função:</strong>
+            declare uma função chamada <code>mudarLuz()</code>.
+            Ela será responsável por controlar a lâmpada.
+        </li>
 
+        <li>
+            <strong>Verifique o estado da lâmpada:</strong>
+            dentro da função, utilize uma estrutura
+            <code>if</code> e <code>else</code> para verificar
+            se a lâmpada está acesa ou apagada.
+        </li>
 
-        <a
-            href="../index.html"
-            class="voltar"
+        <li>
+            <strong>Altere a imagem:</strong>
+            utilize a propriedade <code>.src</code> para trocar
+            a imagem da lâmpada de acordo com seu estado.
+        </li>
+
+        <li>
+            <strong>Acenda a lâmpada:</strong>
+            quando ela estiver apagada, faça com que a imagem
+            seja alterada para <code>lampada-acesa.png</code>.
+        </li>
+
+        <li>
+            <strong>Apague a lâmpada:</strong>
+            quando ela estiver acesa, faça com que a imagem
+            seja alterada para <code>lampada-apagada.png</code>.
+        </li>
+
+        <li>
+            <strong>Teste seu código:</strong>
+            o botão já está configurado para chamar a função
+            <code>mudarLuz()</code>. Não é necessário criar
+            outro botão. Verifique se cada clique alterna
+            corretamente o estado da lâmpada.
+        </li>
+    </ol>
+
+    <h2>💡 Desafio</h2>
+
+    <div class="area-jogo">
+        <img
+            id="lampada"
+            src="../assents/lampada-apagada.png"
+            alt="Lâmpada apagada"
         >
-            ← Voltar ao mapa
-        </a>
 
-
-        <div class="fase-container">
-
-
-            <div class="missao">
-
-                <span class="numero">
-                    CAPÍTULO SEIS
-                </span>
-
-
-                <h2>
-                    As Luzes da Joyce
-                </h2>
-
-
-                <p>
-                    Joyce descobriu que as luzes de Natal
-                    podem ser usadas para se comunicar
-                    com Will.
-                    <br><br>
-                    Agora você precisa programar
-                    a lâmpada usando JavaScript.
-                    <br><br>
-                    A cada clique no botão, a lâmpada
-                    deve trocar entre acesa e apagada.
-                </p>
-
-
-                <h3>SUA MISSÃO</h3>
-
-
-                <ul id="tarefas">
-
-                    <li>
-                        Encontre a lâmpada usando
-                        <b>document.getElementById("lampada")</b>.
-                    </li>
-
-                    <li>
-                        Crie uma função chamada
-                        <b>mudarLuz()</b>.
-                    </li>
-
-                    <li>
-                        Dentro da função, use
-                        <b>if e else</b> para verificar
-                        se a lâmpada está acesa ou apagada.
-                    </li>
-
-                    <li>
-                        Use <b>.src</b> para trocar a imagem
-                        da lâmpada.
-                    </li>
-
-                    <li>
-                        Para acender, use a imagem
-                        <b>assents/lampada-acesa.png</b>.
-                    </li>
-
-                    <li>
-                        Para apagar, use a imagem
-                        <b>assents/lampada-apagada.png</b>.
-                    </li>
-
-                    <li>
-                        O botão já está configurado para chamar
-                        a função <b>mudarLuz()</b> usando
-                        <b>onclick</b>. Você não precisa criar o botão.
-                    </li>
-
-                </ul>
-
-                <div class="botoes-missao">
-
-                    <button
-                        class="botao-secundario"
-                        onclick="mostrarDica()"
-                    >
-                        💡 Ver dica
-                    </button>
-
-
-                    <button
-                        class="botao-secundario"
-                        onclick="mostrarGabarito()"
-                    >
-                        📖 Ver gabarito
-                    </button>
-
-                </div>
-
-
-                <div
-                    id="dica"
-                    class="caixa-ajuda escondida"
-                >
-
-                    let lampada =
-                    document.getElementById("lampada");
-
-                    <br><br>
-
-                    function mudarLuz() {
-
-                    <br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;if (...) {
-
-                    <br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
-                    troque para a imagem acesa
-
-                    <br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;} else {
-
-                    <br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
-                    troque para a imagem apagada
-
-                    <br>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;}
-
-                    <br>
-
-                    }
-
-                    <br><br>
-
-                    O botão deve chamar a função usando
-                    <b>onclick</b>.
-
-                </div>
-
-
-             
-            <div
-                id="gabarito"
-                class="caixa-ajuda escondida"
-            >
-
-                let lampada =
-                document.getElementById("lampada");
-
-                <br><br>
-
-                function mudarLuz() {
-
-                <br>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;if
-                (lampada.src.includes("apagada")) {
-
-                <br>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                lampada.src = "../assents/lampada-acesa.png";
-
-                <br>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;} else {
-
-                <br>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                lampada.src = "../assents/lampada-apagada.png";
-
-                <br>
-
-                &nbsp;&nbsp;&nbsp;&nbsp;}
-
-                <br>
-
-                }
-
-            </div>
-
-
-            </div>
-
-
-            <div class="editor">
-
-                <div class="editor-topo">
-
-                    <span>
-                        EDITOR.JS
-                    </span>
-
-                    <span>
-                        JAVASCRIPT
-                    </span>
-
-                </div>
-
-
-                <textarea
-                    id="codigo"
-                    spellcheck="false"
-                ></textarea>
-
-
-                <div class="botoes">
-
-                    <button onclick="rodarCodigo()">
-                        ▶ Rodar
-                    </button>
-
-
-                    <button onclick="verificarCodigo()">
-                        ✓ Verificar fase
-                    </button>
-
-
-                    <button
-                        class="botao-secundario"
-                        onclick="recomecarCodigo()"
-                    >
-                        ↻ Recomeçar código
-                    </button>
-
-
-                    <button
-                        id="luzes"
-                        class="botao-secundario"
-                        onclick="testarLuzes()"
-                    >
-                        💡 Testar luzes
-                    </button>
-
-                </div>
-
-
-                <div
-                    id="mensagem"
-                    class="mensagem escondida"
-                ></div>
-
-
-                <div class="saida-titulo">
-                    LUZES DA JOYCE
-                </div>
-
-
-                <div class="saida">
-
-                    <img
-                        id="lampada"
-                        src="../img/lampada-apagada.png"
-                        alt="Lâmpada apagada"
-                    >
-
-                    <br><br>
-
-                    <button
-                        id="botaoLuz"
-                        onclick="mudarLuz()"
-                    >
-                        💡 Acender / Apagar
-                    </button>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-        <footer>
-            Stranger Code • Hawkins, Indiana
-        </footer>
-
-    </section>
-
+        <button onclick="mudarLuz()">Acender / Apagar</button>
+    </div>
+
+    <h2>💻 Seu código</h2>
+
+    <textarea id="codigo" placeholder="Digite seu código JavaScript aqui..."></textarea>
+
+    <div class="botoes">
+        <button onclick="rodarCodigo()">Rodar código</button>
+        <button onclick="verificarCodigo()">Verificar fase</button>
+        <button onclick="recomecarCodigo()">Recomeçar código</button>
+    </div>
+
+    <h2>📢 Resultado</h2>
+
+    <div id="saida" class="saida"></div>
+
+    <h2>❓ Precisa de ajuda?</h2>
+
+    <button onclick="mostrarDica()">Mostrar dica</button>
+    <div id="dica" class="escondida">
+        <p>
+            Lembre-se de que você pode utilizar o atributo
+            <code>src</code> da imagem para verificar ou alterar
+            o arquivo exibido. A estrutura <code>if/else</code>
+            permite escolher o que fazer em cada situação.
+        </p>
+    </div>
+
+    <button onclick="mostrarGabarito()">Mostrar gabarito</button>
+    <div id="gabarito" class="escondida">
+        <pre><code>
+let lampada = document.getElementById("lampada");
+
+function mudarLuz() {
+    if (lampada.src.includes("apagada")) {
+        lampada.src = "../assents/lampada-acesa.png";
+    } else {
+        lampada.src = "../assents/lampada-apagada.png";
+    }
+}
+        </code></pre>
+    </div>
 
     <script src="../js/fase6.js"></script>
 
 </body>
-
 </html>
-
