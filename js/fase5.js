@@ -1,3 +1,6 @@
+// Texto inicial do editor usado pelo botão "Recomeçar código".
+const codigoInicial = document.getElementById("codigo").value;
+
 
 
 
@@ -154,7 +157,7 @@ function verificarCodigo() {
             "A mochila está pronta!";
 
 
-        concluirFase();
+        concluirFase(5);
 
     }
 

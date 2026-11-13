@@ -16,14 +16,10 @@
 
 <body>
 
-    <!-- FUNDO -->
 
     <div class="background"></div>
 
 
-    <!-- ==============================
-         TELA DO MAPA
-    =============================== -->
 
     <section id="mapa" class="tela"> 
 
@@ -36,7 +32,7 @@
             </p>
 
             <p id="progresso">
-                1 de 7 capítulos concluídos
+                0 de 7 capítulos concluídos
             </p>
 
         </header>
@@ -44,8 +40,7 @@
 
         <div class="mapa">
 
-
-            <!-- FASE 1 -->
+<!--  Fase 1 -->
 
             <div
                 id="card1"
@@ -80,7 +75,7 @@
             </div>
 
 
-            <!-- FASE 2 -->
+            <!-- fase 2 -->
 
             <div
                 id="card2"
@@ -310,182 +305,7 @@
          TELA DA FASE
     =============================== -->
 
-    <section
-        id="fase"
-        class="tela escondida"
-    >
-
-
-        <header>
-
-            <h1>STRANGER CODE</h1>
-
-            <p class="subtitle">
-                APRENDA JAVASCRIPT • UM CAPÍTULO POR VEZ
-            </p>
-
-        </header>
-
-
-        <button
-            class="voltar"
-            onclick="voltarMapa()"
-        >
-            ← Voltar ao mapa
-        </button>
-
-
-        <div class="fase-container">
-
-
-            <!-- ======================
-                 MISSÃO
-            ======================= -->
-
-            <div class="missao">
-
-                <span
-                    id="faseNumero"
-                    class="numero"
-                >
-                    CAPÍTULO UM
-                </span>
-
-
-                <h2 id="faseTitulo">
-                    A Ficha de Onze
-                </h2>
-
-
-                <p id="historia">
-                    Hawkins, 1983.
-                </p>
-
-
-                <h3>
-                    SUA MISSÃO
-                </h3>
-
-
-                <ul id="tarefas">
-                </ul>
-
-
-                <div class="botoes-missao">
-
-                    <button
-                        class="botao-secundario"
-                        onclick="mostrarDica()"
-                    >
-                        💡 Ver dica
-                    </button>
-
-
-                    <button
-                        class="botao-secundario"
-                        onclick="mostrarGabarito()"
-                    >
-                        📖 Ver gabarito
-                    </button>
-
-                </div>
-
-
-                <div
-                    id="dica"
-                    class="caixa-ajuda escondida"
-                >
-                </div>
-
-
-                <div
-                    id="gabarito"
-                    class="caixa-ajuda escondida"
-                >
-                </div>
-
-            </div>
-
-
-
-            <!-- ======================
-                 EDITOR
-            ======================= -->
-
-            <div class="editor">
-
-
-                <div class="editor-topo">
-
-                    <span>
-                        EDITOR.JS
-                    </span>
-
-                    <span>
-                        JAVASCRIPT
-                    </span>
-
-                </div>
-
-
-                <textarea
-                    id="codigo"
-                    spellcheck="false"
-                ></textarea>
-
-
-                <div class="botoes">
-
-                    <button onclick="rodarCodigo()">
-                        ▶ Rodar
-                    </button>
-
-
-                    <button onclick="verificarCodigo()">
-                        ✓ Verificar fase
-                    </button>
-
-
-                    <button
-                        class="botao-secundario"
-                        onclick="recomecarCodigo()"
-                    >
-                        ↻ Recomeçar código
-                    </button>
-
-                </div>
-
-
-                <div
-                    id="mensagem"
-                    class="mensagem escondida"
-                >
-                </div>
-
-
-                <div class="saida-titulo">
-                    SAÍDA DO PROGRAMA
-                </div>
-
-
-                <div
-                    id="saida"
-                    class="saida"
-                >
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <footer>
-
-            Stranger Code • Hawkins, Indiana
-
-        </footer>
-
-    </section>
+    <!-- As fases agora ficam em páginas HTML próprias dentro da pasta fases/. -->
 
 
 

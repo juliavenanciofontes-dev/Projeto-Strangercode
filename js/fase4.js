@@ -1,3 +1,6 @@
+// Texto inicial do editor usado pelo botão "Recomeçar código".
+const codigoInicial = document.getElementById("codigo").value;
+
 
 // ============================================================
 // STRANGER CODE - FASE 4
@@ -218,7 +221,7 @@ function verificarCodigo() {
             "<br><br>" +
             "O Demogorgon foi derrotado!";
 
-        concluirFase();
+        concluirFase(4);
 
     } else {
 

@@ -1,36 +1,45 @@
-```html
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
     <title>
-        Stranger Code - O Portal do Mundo Invertido
+        Stranger Code - Batalha Final
     </title>
 
     <link
         rel="stylesheet"
         href="../style.css"
     >
+
 </head>
+
 
 <body>
 
     <div class="background"></div>
 
+
     <section class="tela">
 
         <header>
+
             <h1>STRANGER CODE</h1>
+
             <p class="subtitle">
                 ⚠ BATALHA FINAL
             </p>
+
         </header>
+
 
         <a
             href="../index.html"
@@ -39,7 +48,9 @@
             ← Voltar ao mapa
         </a>
 
+
         <div class="fase-container">
+
 
             <div class="missao">
 
@@ -47,209 +58,101 @@
                     ⚠ BATALHA FINAL
                 </span>
 
+
                 <h2>
-                    O Portal do Mundo Invertido
+                    Vecna e o Mundo Invertido
                 </h2>
 
+
                 <p>
-                    O portal para o Mundo Invertido foi aberto
-                    novamente, e Hawkins está em perigo!
 
-                    Para fechá-lo, você precisará coletar
-                    energia suficiente e usar seus conhecimentos
-                    de JavaScript para concluir a missão.
+                    Você chegou ao coração do Mundo Invertido.
 
-                    Organize as energias coletadas, calcule
-                    o total e descubra se já é possível
-                    fechar o portal.
+                    Vecna está diante de você e o portal
+                    está prestes a ser aberto.
+
+                    Para derrotá-lo, você precisará construir
+                    seu próprio sistema de batalha usando
+                    tudo o que aprendeu.
+
                 </p>
 
+
                 <h3>SUA MISSÃO</h3>
+
 
                 <ul id="tarefas">
 
                     <li>
-                        <strong>Etapa 1 — Prepare as variáveis</strong>
-
-                        <ol>
-                            <li>
-                                Crie uma variável chamada
-                                <code>energias</code> e inicialize-a
-                                como um vetor vazio.
-                            </li>
-
-                            <li>
-                                Crie uma variável chamada
-                                <code>total</code> e atribua a ela
-                                o valor <code>0</code>. Ela será
-                                responsável por armazenar a quantidade
-                                total de energia coletada.
-                            </li>
-                        </ol>
+                        Crie variáveis para representar o
+                        jogador e a vida de Vecna.
                     </li>
 
                     <li>
-                        <strong>Etapa 2 — Prepare a interface</strong>
-
-                        <ol start="3">
-                            <li>
-                                No HTML, crie um botão com o texto
-                                <strong>"Coletar energia"</strong>
-                                e um identificador que permita
-                                acessá-lo pelo JavaScript.
-                            </li>
-
-                            <li>
-                                Crie outro botão com o texto
-                                <strong>"Fechar portal"</strong>.
-                            </li>
-
-                            <li>
-                                Crie três elementos HTML para exibir:
-                                <ul>
-                                    <li>
-                                        A quantidade total de energia
-                                        acumulada.
-                                    </li>
-                                    <li>
-                                        O resultado da última ação
-                                        realizada.
-                                    </li>
-                                    <li>
-                                        A lista de energias coletadas.
-                                    </li>
-                                </ul>
-                            </li>
-                        </ol>
+                        No HTML, crie um
+                        <code>input</code>
+                        para informar a força do ataque.
                     </li>
 
                     <li>
-                        <strong>Etapa 3 — Conecte os elementos ao JavaScript</strong>
-
-                        <ol start="6">
-                            <li>
-                                Utilize
-                                <code>document.getElementById()</code>
-                                para armazenar em variáveis os três
-                                elementos criados para exibir
-                                as informações.
-                            </li>
-
-                            <li>
-                                Configure o botão de coleta para
-                                executar uma função chamada
-                                <code>coletarEnergia()</code>
-                                quando for clicado.
-                            </li>
-
-                            <li>
-                                Configure o botão de fechar o portal
-                                para executar uma função chamada
-                                <code>fecharPortal()</code>
-                                quando for clicado.
-                            </li>
-                        </ol>
+                        Crie um
+                        <code>button</code>
+                        para realizar o ataque e um
+                        <code>p</code>
+                        para mostrar o resultado.
                     </li>
 
                     <li>
-                        <strong>Etapa 4 — Implemente a coleta de energia</strong>
-
-                        <ol start="9">
-                            <li>
-                                Crie a função
-                                <code>coletarEnergia()</code>.
-                            </li>
-
-                            <li>
-                                Dentro dela, gere um número aleatório
-                                inteiro entre 1 e 10. Esse será o
-                                valor de energia obtido pelo jogador.
-                            </li>
-
-                            <li>
-                                Adicione o valor gerado ao vetor
-                                <code>energias</code>, utilizando
-                                o método <code>push()</code>.
-                            </li>
-
-                            <li>
-                                Atualize a variável <code>total</code>
-                                com a soma de todas as energias
-                                coletadas. Para isso:
-                                <ul>
-                                    <li>
-                                        Primeiro, zere o valor de
-                                        <code>total</code>.
-                                    </li>
-                                    <li>
-                                        Depois, utilize um laço de
-                                        repetição <code>for</code>
-                                        para percorrer o vetor.
-                                    </li>
-                                    <li>
-                                        A cada repetição, adicione
-                                        o valor do elemento atual
-                                        à variável <code>total</code>.
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                Atualize a página para exibir o
-                                total de energia acumulada e a
-                                lista de valores coletados.
-                            </li>
-
-                            <li>
-                                Exiba uma mensagem informando
-                                quantos pontos de energia foram
-                                obtidos naquela coleta.
-                            </li>
-                        </ol>
+                        Use
+                        <code>document.getElementById()</code>
+                        para acessar os elementos da página.
                     </li>
 
                     <li>
-                        <strong>Etapa 5 — Feche o portal</strong>
+                        Use
+                        <code>.value</code>
+                        para pegar o valor digitado no input
+                        e converta-o para número.
+                    </li>
 
-                        <ol start="15">
-                            <li>
-                                Crie a função
-                                <code>fecharPortal()</code>.
-                            </li>
+                    <li>
+                        Crie uma função que receba a força
+                        do ataque, calcule o dano e utilize
+                        <code>return</code>.
+                    </li>
 
-                            <li>
-                                Dentro dela, utilize uma estrutura
-                                condicional <code>if</code> para
-                                verificar se o total de energia
-                                acumulada é maior ou igual a 30.
-                            </li>
+                    <li>
+                        A cada ataque, diminua a vida de Vecna
+                        e registre o dano em um vetor.
+                    </li>
 
-                            <li>
-                                Se a condição for verdadeira:
-                                <ul>
-                                    <li>
-                                        Exiba uma mensagem informando
-                                        que o portal foi fechado e
-                                        que Hawkins foi salva.
-                                    </li>
-                                    <li>
-                                        Desative os dois botões
-                                        para impedir novas ações.
-                                    </li>
-                                </ul>
-                            </li>
+                    <li>
+                        Use
+                        <code>if</code>
+                        e
+                        <code>else</code>
+                        para verificar se Vecna foi derrotado.
+                    </li>
 
-                            <li>
-                                Caso contrário, utilize
-                                <code>else</code> para exibir
-                                uma mensagem informando que a
-                                energia ainda é insuficiente e
-                                que o jogador precisa coletar mais.
-                            </li>
-                        </ol>
+                    <li>
+                        Utilize
+                        <code>innerText</code>
+                        ou
+                        <code>innerHTML</code>
+                        para atualizar o resultado na página.
+                    </li>
+
+                    <li>
+                        Use um
+                        <code>for</code>
+                        ou
+                        <code>while</code>
+                        para percorrer o vetor e mostrar
+                        o histórico dos ataques.
                     </li>
 
                 </ul>
+
 
                 <div class="botoes-missao">
 
@@ -260,6 +163,7 @@
                         💡 Ver dica
                     </button>
 
+
                     <button
                         class="botao-secundario"
                         onclick="mostrarGabarito()"
@@ -269,91 +173,279 @@
 
                 </div>
 
+
                 <div
                     id="dica"
                     class="caixa-ajuda escondida"
                 >
-                    Comece criando o vetor e as variáveis
-                    que serão usadas no jogo.
 
-                    <br><br>
+                    Comece pelo HTML!
+
+                    Pense nos três elementos que o jogador
+                    precisa: um campo para digitar, um botão
+                    para atacar e um elemento para mostrar
+                    o resultado.
 
                     No JavaScript, lembre-se:
 
-                    <br><br>
+                    • document.getElementById() encontra
+                      elementos da página.
 
-                    • <code>document.getElementById()</code>
-                    encontra elementos da página.
+                    • .value pega o que foi digitado no input.
 
-                    <br><br>
+                    • Number() pode converter o valor
+                      para número.
 
-                    • <code>onclick</code> chama uma função
-                    quando o botão é clicado.
+                    • Uma function pode receber a força
+                      do ataque e devolver o dano usando
+                      return.
 
-                    <br><br>
+                    • O vetor pode guardar os ataques
+                      realizados.
 
-                    • <code>Math.floor(Math.random() * 10) + 1</code>
-                    gera um número de 1 a 10.
+                    • if e else podem verificar se Vecna
+                      ainda está vivo.
 
-                    <br><br>
+                    • innerText ou innerHTML podem atualizar
+                      o que aparece na página.
 
-                    • <code>push()</code> adiciona um valor
-                    ao final do vetor.
+                    • for ou while podem percorrer o vetor
+                      e mostrar o histórico dos ataques.
 
-                    <br><br>
+                    Pense neste caminho:
 
-                    • Um <code>for</code> pode percorrer
-                    o vetor e somar seus valores.
+                    Jogador digita → JavaScript pega o valor →
+                    calcula o dano → diminui a vida de Vecna →
+                    registra o ataque → mostra o resultado
+                    na página.
 
-                    <br><br>
+                    Não esqueça: nesta fase, você não precisa
+                    utilizar prompt() para receber o ataque.
 
-                    • Use <code>if</code> e <code>else</code>
-                    para verificar se o total chegou a 30.
-
-                    <br><br>
-
-                    Você pode atualizar a tela sempre que
-                    o jogador coletar energia ou tentar
-                    fechar o portal.
                 </div>
+
 
                 <div
                     id="gabarito"
                     class="caixa-ajuda escondida"
                 >
-<pre><code>let energias = [];
-let total = 0;
 
-const energiaNaTela =
-    document.getElementById("energia");
+<pre><code>
+let vidaVecna = 100;
+
+let ataques = [];
+
+
+const inputAtaque =
+    document.getElementById("forcaAtaque");
+
+
+const botaoAtacar =
+    document.getElementById("btnAtacar");
+
 
 const resultado =
     document.getElementById("resultado");
 
+
+const vidaNaTela =
+    document.getElementById("vidaVecna");
+
+
 const historico =
     document.getElementById("historico");
 
-function coletarEnergia() {
-    let energia = Math.floor(Math.random() * 10) + 1;
 
-    energias.push(energia);
+function calcularDano(forca) {
 
-    total = 0;
+    return forca * 2;
 
-    for (let i = 0; i &lt; energias.length; i++) {
-        total += energias[i];
-    }
-
-    energiaNaTela.innerText = total;
-
-    historico.innerText =
-        "Energias coletadas: " + energias.join(", ");
-
-    resultado.innerText =
-        "Você coletou " + energia + " pontos de energia!";
 }
 
-function fecharPortal() {
-    if (total &gt;= 30) {
-        resultado.innerText =
-            "Portal fechado
+
+botaoAtacar.addEventListener(
+    "click",
+    function() {
+
+        if (vidaVecna <= 0) {
+
+            resultado.innerText =
+                "Vecna já foi derrotado!";
+
+            return;
+
+        }
+
+
+        let forca =
+            Number(inputAtaque.value);
+
+
+        if (
+            forca <= 0 ||
+            inputAtaque.value === ""
+        ) {
+
+            resultado.innerText =
+                "Digite uma força de ataque válida!";
+
+            return;
+
+        }
+
+
+        let dano =
+            calcularDano(forca);
+
+
+        vidaVecna -= dano;
+
+
+        if (vidaVecna < 0) {
+
+            vidaVecna = 0;
+
+        }
+
+
+        ataques.push(dano);
+
+
+        vidaNaTela.innerText =
+            vidaVecna;
+
+
+        if (vidaVecna === 0) {
+
+            resultado.innerText =
+                "Você derrotou Vecna e fechou o portal!";
+
+            botaoAtacar.disabled = true;
+
+        }
+
+        else {
+
+            resultado.innerText =
+                "Você causou " +
+                dano +
+                " de dano! Vecna ainda possui " +
+                vidaVecna +
+                " de vida.";
+
+        }
+
+
+        let textoHistorico = "";
+
+
+        for (
+            let i = 0;
+            i < ataques.length;
+            i++
+        ) {
+
+            textoHistorico +=
+                "Ataque " +
+                (i + 1) +
+                ": " +
+                ataques[i] +
+                " de dano&lt;br&gt;";
+
+        }
+
+
+        historico.innerHTML =
+            textoHistorico;
+
+
+        inputAtaque.value = "";
+
+    }
+);
+</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <div class="editor">
+
+                <div class="editor-topo">
+
+                    <span>
+                        EDITOR.JS
+                    </span>
+
+                    <span>
+                        JAVASCRIPT + HTML
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="codigo"
+                    spellcheck="false"
+                ></textarea>
+
+
+                <div class="botoes">
+
+                    <button onclick="rodarCodigo()">
+                        ▶ Rodar
+                    </button>
+
+
+                    <button onclick="verificarCodigo()">
+                        ⚔ Verificar batalha
+                    </button>
+
+
+                    <button
+                        class="botao-secundario"
+                        onclick="recomecarCodigo()"
+                    >
+                        ↻ Recomeçar código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="mensagem"
+                    class="mensagem escondida"
+                ></div>
+
+
+                <div class="saida-titulo">
+                    SAÍDA DA BATALHA
+                </div>
+
+
+                <div
+                    id="saida"
+                    class="saida"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+
+            Stranger Code • Mundo Invertido
+
+        </footer>
+
+    </section>
+
+
+    <script src="../js/progresso.js"></script>
+    <script src="../js/fase7.js"></script>
+
+</body>
+
+</html>

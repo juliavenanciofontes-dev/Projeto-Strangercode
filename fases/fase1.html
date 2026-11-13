@@ -77,26 +77,10 @@ de uma ficha de identidade.
 
 
                 <ul id="tarefas">
-                    <li>
-                        Utilize var ou let para guardar as variaveis
+                    <li>Crie um programa para registrar algumas informações sobre Onze. 
+                        Pergunte seu nome, sua idade e quantos dias ela passou fora do laboratório. 
+                        Depois, exiba todas as informações na tela para que Mike e seus amigos possam conhecê-la melhor.
                     </li>
-
-                    <li>
-                        Pergunte o nome usando prompt().
-                    </li>
-
-                    <li>
-                        Pergunte a idade usando parseInt().
-                    </li>
-
-                    <li>
-                        Pergunte os waffles usando parseFloat().
-                    </li>
-
-                    <li>
-                        Mostre tudo usando document.write().
-                    </li>
-
                 </ul>
 
 
@@ -125,17 +109,14 @@ de uma ficha de identidade.
                     class="caixa-ajuda escondida"
                 >
 
-Você pode começar assim:
+Você pode começar assim: <br>
 
-let nome =
-prompt("Qual o nome?");
+let nome = prompt("Qual o nome?"); <br>
 
-Para a idade:
+Para a idade:  <br>
+let idade = parseInt(prompt("Qual a idade?")); <br>
 
-let idade =
-parseInt(
-    prompt("Qual a idade?")
-);
+Para os dias: Tente utilizar parseFloat para ter uma resposta precisa ou parseInt para uma resposta aproximada 
 
                 </div>
 
@@ -145,30 +126,17 @@ parseInt(
                     class="caixa-ajuda escondida"
                 >
 
-let nome =
-prompt("Qual o nome?");
+let nome = prompt("Qual o nome?"); <br>
 
-let idade =
-parseInt(
-    prompt("Qual a idade?")
-);
+let idade = parseInt(prompt("Qual a idade?")); <br>
 
-let waffles =
-parseFloat(
-    prompt("Quantos waffles?")
-);
+let dias = parseFloat(prompt("Quantos dias você passou fora do laboratório?")); <br>
 
-document.write(
-    "Nome: " + nome
-);
+document.write("Nome: " + nome); <br>
 
-document.write(
-    "&lt;br&gt;Idade: " + idade
-);
+document.write("&lt;br&gt;Idade: " + idade); <br>
 
-document.write(
-    "&lt;br&gt;Waffles: " + waffles
-);
+document.write("&lt;br&gt;Dias: " + dias);
 
                 </div>
 
@@ -246,10 +214,11 @@ document.write(
         </footer>
 
     </section>
-
-
-    <script src="../js/fase1.js"></script>
-
+<script src="../js/progresso.js"></script>
+<script src="https://unpkg.com/acorn@8.15.0/dist/acorn.js"></script>
+<script src="../js/executor.js"></script>
+<script src="../js/validador.js"></script>
+<script src="../js/fase1.js"></script>
 </body>
 
 </html>

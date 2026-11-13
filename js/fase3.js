@@ -1,3 +1,6 @@
+// Texto inicial do editor usado pelo botão "Recomeçar código".
+const codigoInicial = document.getElementById("codigo").value;
+
 
 
 function mostrarDica() {
@@ -191,7 +194,7 @@ function verificarCodigo() {
             "O dano foi calculado! O Demogorgon recuou.";
 
 
-        concluirFase();
+        concluirFase(3);
 
     }
 
