@@ -263,10 +263,8 @@ if (no.type === "VariableDeclarator") {
     const nomeExibido = variaveisExibidas.includes(variavelNome?.nome);
     const idadeExibida = variaveisExibidas.includes(variavelIdade?.nome);
     const diasExibidos = variaveisExibidas.includes(variavelDias?.nome);
-    const todasVariaveisExibidas =
-    nomeExibido &&
-    idadeExibida &&
-    diasExibidos;
+    const todasVariaveisExibidas = nomeExibido && idadeExibida && diasExibidos;
+    const estruturaValida = temPrompt && temIdade && temDias && todasVariaveisExibidas;
         
 
     return {
@@ -279,7 +277,8 @@ if (no.type === "VariableDeclarator") {
         nomeExibido: nomeExibido,
         idadeExibida: idadeExibida,
         diasExibidos: diasExibidos,
-        todasVariaveisExibidas: todasVariaveisExibidas
+        todasVariaveisExibidas: todasVariaveisExibidas,
+        estruturaValida: estruturaValida
     }
 };
 
