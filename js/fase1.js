@@ -47,174 +47,130 @@ function recomecarCodigo() {
 }
 
 
-function rodarCodigo() {
 
-    const codigo =
-        document
+async function rodarCodigo() {
+
+    const codigo = document
         .getElementById("codigo")
         .value;
 
-
-    const saida =
-        document
+    const saida = document
         .getElementById("saida");
 
+    const mensagem = document.getElementById("mensagem");
+    mensagem.className = "mensagem escondida";
+    mensagem.innerHTML = "";
 
-    const writeOriginal =
-        document.write;
+    const analise = analisarEstrutura(codigo);
 
+    if (!analise.sucesso) {
+        saida.innerHTML = "Erro: " + analise.erro;
+        return;
+    }
 
-    const logOriginal =
-        console.log;
+    const entradas = [];
 
+    const perguntas = [
+        "Informe o nome:",
+        "Informe a idade:",
+        "Informe quantos dias você passou fora do laboratório:"
+    ];
 
-    let resultado = "";
+    for (let i = 0; i < analise.encontrados.prompt; i++) {
 
+        const resposta = window.prompt(
+            perguntas[i] || "Informe sua resposta:"
+        );
 
-    try {
+        entradas.push(resposta);
+    }
 
-        document.write =
-            function(texto) {
+    const resultado = await executarCodigo(codigo, entradas);
 
-                resultado += texto;
-
-            };
-
-
-        console.log =
-            function(...dados) {
-
-                resultado +=
-                    dados.join(" ") +
-                    "<br>";
-
-            };
-
-
-        const funcao =
-            new Function(codigo);
-
-
-        funcao();
-
-
-        saida.innerHTML =
-            resultado;
-
-
-    } catch (erro) {
-
-        saida.innerHTML =
-            "Erro: " +
-            erro.message;
-
-    } finally {
-
-        document.write =
-            writeOriginal;
-
-
-        console.log =
-            logOriginal;
-
+    if (resultado.sucesso) {
+        saida.innerHTML = resultado.resultado;
+    } else {
+        saida.innerHTML = "Erro: " + resultado.erro;
     }
 
 }
 
 
-function verificarCodigo() {
 
-    const codigo =
-        document
+
+async function verificarCodigo() {
+
+    const codigo = document
         .getElementById("codigo")
-        .value
-        .toLowerCase();
+        .value;
 
+    const analise = analisarEstrutura(codigo);
 
-    let erros = [];
-
-
-    if (
-    !codigo.includes("let") &&
-    !codigo.includes("var")
-) {
-
-    erros.push(
-        "Declare uma variável usando let ou var."
-    );
-
-}
-
-
-    if (!codigo.includes("prompt")) {
-
-        erros.push(
-            "Use prompt()."
-        );
-
-    }
-
-
-    if (!codigo.includes("parseint")) {
-
-        erros.push(
-            "Use parseInt()."
-        );
-
-    }
-
-
-    if (!codigo.includes("parsefloat")) {
-
-        erros.push(
-            "Use parseFloat()."
-        );
-
-    }
-
-
-    if (
-        !codigo.includes(
-            "document.write"
-        )
-    ) {
-
-        erros.push(
-            "Use document.write()."
-        );
-
-    }
-
-
-    const mensagem =
-        document
+    const mensagem = document
         .getElementById("mensagem");
 
+    mensagem.className = "mensagem escondida";
+    mensagem.innerHTML = "";
 
-    if (erros.length === 0) {
+    // Verifica se existe algum erro de sintaxe
+    if (!analise.sucesso) {
 
-        mensagem.className =
-            "mensagem sucesso";
+        mensagem.className = "mensagem erro";
 
+        mensagem.innerHTML = analise.erro;
 
-        mensagem.innerHTML =
-            "<strong>✓ MISSÃO CONCLUÍDA!</strong>";
-
-
-        concluirFase(1);
-
-
-    } else {
-
-        mensagem.className =
-            "mensagem erro";
-
-
-        mensagem.innerHTML =
-            erros.join("<br>");
-
+        return;
     }
 
+    const erros = analise.validacao.erros;
+
+
+
+    if (erros.length > 0) {
+        mensagem.className = "mensagem erro";
+        mensagem.innerHTML = erros.join("<br>");
+        return;
+    }
+
+    const entradasTeste = [
+    "PessoaTeste",
+    "23",
+    "4.5"
+    ];
+
+    const resultado = await executarCodigo(
+        codigo,
+        entradasTeste
+    );
+
+    if (!resultado.sucesso) {
+        mensagem.className = "mensagem erro";
+        mensagem.innerHTML =
+            "Seu código possui um erro durante a execução: " +
+            resultado.erro;
+        return;
+    }
+    
+    const valoresEsperados = entradasTeste;
+    const resultadoTexto = resultado.resultado;
+
+    const todosExibidos = valoresEsperados.every(valor =>
+        resultadoTexto.includes(String(valor))
+    );
+
+    if (!todosExibidos) {
+        mensagem.className = "mensagem erro";
+        mensagem.innerHTML =
+            "Seu código executou, mas não exibiu corretamente todas as informações.";
+        return;
+    }
+
+    mensagem.className = "mensagem sucesso";
+    mensagem.innerHTML =
+        "<strong>✓ MISSÃO CONCLUÍDA!</strong>";
+
+    concluirFase(1);
 }
+
 
 

@@ -7,6 +7,7 @@
         );
     }
 
+
 function identificarVariaveis(no) {
 
     const variaveis = [];
@@ -19,8 +20,19 @@ function identificarVariaveis(no) {
 
         // Identifica o uso de uma variável.
         if (no.type === "Identifier") {
-
             variaveis.push(no.name);
+            return;
+        }
+
+        // Evita confundir propriedades com variáveis.
+        if (no.type === "MemberExpression") {
+
+            percorrer(no.object);
+
+            // Só percorre a propriedade se ela estiver entre colchetes.
+            if (no.computed) {
+                percorrer(no.property);
+            }
 
             return;
         }
@@ -60,6 +72,7 @@ function identificarVariaveis(no) {
 }
 
 
+
 function analisarEstrutura(codigo) {
 
     let estrutura;
@@ -94,7 +107,41 @@ function analisarEstrutura(codigo) {
 
     };
 
+    let promptPersonalizado = false;
+    const nomesFuncoes = [];
+    function identificarFuncoes(no) {
 
+    if (!no || typeof no !== "object") {
+        return;
+    }
+
+    if (
+        no.type === "FunctionDeclaration" &&
+        no.id
+    ) {
+        nomesFuncoes.push(no.id.name);
+    }
+
+    for (const chave in no) {
+
+        const valor = no[chave];
+
+        if (Array.isArray(valor)) {
+
+            valor.forEach(item => identificarFuncoes(item));
+
+        } else if (valor && typeof valor.type === "string") {
+
+            identificarFuncoes(valor);
+
+        }
+
+    }
+
+}
+
+
+    identificarFuncoes(estrutura);
 
     // Percorre a estrutura do código.
     function percorrer(no) {
@@ -103,6 +150,53 @@ function analisarEstrutura(codigo) {
             return;
         }
 
+
+        // Verifica se o aluno criou uma função chamada prompt.
+        if (
+            no.type === "FunctionDeclaration" &&
+            no.id &&
+            no.id.name === "prompt"
+        ) {
+            promptPersonalizado = true;
+        }
+
+        if (
+            no.type === "VariableDeclarator" &&
+            no.id.type === "Identifier" &&
+            no.id.name === "prompt" &&
+            no.init &&
+            (
+                no.init.type === "FunctionExpression" ||
+                no.init.type === "ArrowFunctionExpression"
+            )
+        ) {
+            promptPersonalizado = true;
+        }
+
+        if (
+            no.type === "AssignmentExpression" &&
+            no.operator === "=" &&
+            no.left.type === "Identifier" &&
+            no.left.name === "prompt" &&
+            no.right &&
+            (
+                no.right.type === "FunctionExpression" ||
+                no.right.type === "ArrowFunctionExpression"
+            )
+        ) {
+            promptPersonalizado = true;
+        }
+
+        if (
+            no.type === "AssignmentExpression" &&
+            no.operator === "=" &&
+            no.left.type === "Identifier" &&
+            no.left.name === "prompt" &&
+            no.right.type === "Identifier" &&
+            nomesFuncoes.includes(no.right.name)
+        ) {
+            promptPersonalizado = true;
+        }
 
         // Verifica declarações de variáveis.
         if (no.type === "VariableDeclaration") {
@@ -246,17 +340,20 @@ if (no.type === "VariableDeclarator") {
     );
 
     const variavelIdade = atribuicoes.find(item =>
-        item.promptDentroParseInt
+        item.promptDentroParseInt &&
+        item.nome !== variavelNome?.nome
     );
 
     const variavelDias = atribuicoes.find(item =>
         (item.promptDentroParseInt || item.promptDentroParseFloat) &&
+        item.nome !== variavelNome?.nome &&
         item.nome !== variavelIdade?.nome
     );
 
     const temPrompt = Boolean(variavelNome);
     const temIdade = Boolean(variavelIdade);
     const temDias = Boolean(variavelDias);
+    const quantidadePromptsCorreta = encontrados.prompt === 3;
 
     const variaveisExibidas = encontrados.variaveisExibidas;
 
@@ -264,8 +361,44 @@ if (no.type === "VariableDeclarator") {
     const idadeExibida = variaveisExibidas.includes(variavelIdade?.nome);
     const diasExibidos = variaveisExibidas.includes(variavelDias?.nome);
     const todasVariaveisExibidas = nomeExibido && idadeExibida && diasExibidos;
-    const estruturaValida = temPrompt && temIdade && temDias && todasVariaveisExibidas;
-        
+    const estruturaValida = temPrompt && temIdade && temDias && todasVariaveisExibidas && quantidadePromptsCorreta &&
+    !promptPersonalizado;
+    const erros = [];
+
+    if (promptPersonalizado) {
+        erros.push(
+            "Não crie uma função chamada prompt(). Utilize o prompt() original para registrar as respostas."
+        );
+    }
+
+    if (!temPrompt) {
+        erros.push("Declare uma variável que receba prompt() para registrar o nome.");
+    }
+
+    if (!temIdade) {
+        erros.push("Utilize parseInt(prompt()) para registrar a idade.");
+    }
+
+    if (!temDias) {
+        erros.push("Declare outra variável que receba parseInt(prompt()) ou parseFloat(prompt()) para registrar os dias.");
+    }
+
+    if (temPrompt && !nomeExibido) {
+        erros.push("Exiba a variável que armazena o nome usando document.write().");
+    }
+
+    if (temIdade && !idadeExibida) {
+        erros.push("Exiba a variável que armazena a idade usando document.write().");
+    }
+
+    if (temDias && !diasExibidos) {
+        erros.push("Exiba a variável que armazena os dias usando document.write().");
+    }
+
+    if (!quantidadePromptsCorreta) {
+    erros.push("Seu código precisa ter exatamente três chamadas de prompt().");
+    }
+            
 
     return {
     sucesso: true,
@@ -274,11 +407,15 @@ if (no.type === "VariableDeclarator") {
         temPrompt: temPrompt,
         temIdade: temIdade,
         temDias: temDias,
+        variavelNome: variavelNome?.nome,
+        variavelIdade: variavelIdade?.nome,
+        variavelDias: variavelDias?.nome,
         nomeExibido: nomeExibido,
         idadeExibida: idadeExibida,
         diasExibidos: diasExibidos,
         todasVariaveisExibidas: todasVariaveisExibidas,
-        estruturaValida: estruturaValida
+        estruturaValida: estruturaValida,
+        erros: erros
     }
 };
 
